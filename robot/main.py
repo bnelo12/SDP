@@ -27,6 +27,16 @@ def prompt():
     elif cmd == 'right':
         move(500, use_left=False, use_right=True, speed_sp=500)
         move(500, use_left=False, use_right=True, speed_sp=-500)
+    elif cmd == 'sonar':
+        btn = ev3.Button()
+        sonar = ev3.UltrasonicSensor(ev3.INPUT_1)
+        sonar.connected
+        sonar.mode = 'US-DIST-CM'
+
+        while not btn.backspace:
+            print(str(sonar.value()))
+            time.sleep(0.1)
+
     elif cmd == 'exit':
         exit()
     else:
