@@ -76,25 +76,27 @@ def move(time_sp, use_left=True, use_right=True, speed_sp=500):
     print("Position delta: {:>5.1f}".format(pos_end - pos_start))
 
 def move_until(pos_final=100.0, speed_sp=250):
-    position = sonar.value()
     motor_left = ev3.LargeMotor('outA')
     motor_left.connected
     motor_right = ev3.LargeMotor('outD')
     motor_right.connected
 
-    motor_left.run_forever(speed_sp=speed_sp)
-    motor_right.run_forever(speed_sp=speed_sp)
-
-    while sonar.value() > pos_final:
+    delta = abs(sonar.value() - pos_final)
+    while delta > 5.0:
+        delta = abs(sonar.value() - pos_final)
+        reverse = -1.0 if pos_final < sonar.value() else 1.0
         if abs(sonar.value() - pos_final) < 150.0:
-            motor_left.run_forever(speed_sp=100)
-            motor_right.run_forever(speed_sp=100)
+            motor_left.run_forever(speed_sp=100*reverse)
+            motor_right.run_forever(speed_sp=100*reverse)
         if abs(sonar.value() - pos_final) < 70.0:
-            motor_left.run_forever(speed_sp=50)
-            motor_right.run_forever(speed_sp=50)
+            motor_left.run_forever(speed_sp=50*reverse)
+            motor_right.run_forever(speed_sp=50*reverse)
         if abs(sonar.value() - pos_final) < 40.0:
-            motor_left.run_forever(speed_sp=20)
-            motor_right.run_forever(speed_sp=20)
+            motor_left.run_forever(speed_sp=20*reverse)
+            motor_right.run_forever(speed_sp=20*reverse)
+        else:
+            motor_left.run_forever(speed_sp=speed_sp*reverse)
+            motor_right.run_forever(speed_sp=speed_sp*reverse)
         print(sonar.value())
     motor_left.stop()
     motor_right.stop()
