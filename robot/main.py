@@ -1,6 +1,11 @@
 from ev3dev import ev3
 import time
 
+# Set up the sonar
+sonar = ev3.UltrasonicSensor(ev3.INPUT_1)
+sonar.connected
+sonar.mode = 'US-DIST-CM' # Will return value in mm
+
 def dev():
     print("{:^30}".format("You are in DEVELOPER mode"))
     print('-'*30)
@@ -15,12 +20,17 @@ def prompt():
         move(1000, speed_sp=-500)
     elif cmd == 'run':
         speed = input("What speed do you want to run at?\nSpeed: ")
+        t = input("What time do you want to run it for?\nTime: ")
         # No input
         if (len(speed) == 0):
             speed = 500
         else:
             speed = int(speed)
-        move(1000, speed_sp=speed)
+        if (len(time) == 0):
+            t = 1000
+        else:
+            t = int(t)
+        move(t, speed_sp=speed)
     elif cmd == 'left':
         move(500, use_left=True, use_right=False, speed_sp=500)
         move(500, use_left=True, use_right=False, speed_sp=-500)
@@ -32,11 +42,12 @@ def prompt():
         sonar = ev3.UltrasonicSensor(ev3.INPUT_1)
         sonar.connected
         sonar.mode = 'US-DIST-CM'
-
         while not btn.backspace:
             print(str(sonar.value()))
             time.sleep(0.1)
-
+    elif cmd == 'until':
+        final = float(input("Final position: "))
+        move_until(final)
     elif cmd == 'exit':
         exit()
     else:
@@ -50,15 +61,43 @@ def move(time_sp, use_left=True, use_right=True, speed_sp=500):
     motor_right = ev3.LargeMotor('outD')
     motor_right.connected
 
+    pos_start = sonar.value()
+    print("Start position: {:>5.1f}".format(pos_start))
     if use_left:
         motor_left.run_timed(speed_sp=speed_sp, time_sp=time_sp)
     if use_right:
         motor_right.run_timed(speed_sp=speed_sp, time_sp=time_sp)
     print("Motors running for {:.1f} seconds".format(time_sp/1000))
-
     wait_for_motor(motor_left)
     wait_for_motor(motor_right)
     print("Motors finished running")
+    pos_end = sonar.value()
+    print("End position:   {:>5.1f}".format(pos_end))
+    print("Position delta: {:>5.1f}".format(pos_end - pos_start))
+
+def move_until(pos_final=100.0, speed_sp=250):
+    position = sonar.value()
+    motor_left = ev3.LargeMotor('outA')
+    motor_left.connected
+    motor_right = ev3.LargeMotor('outD')
+    motor_right.connected
+
+    motor_left.run_forever(speed_sp=speed_sp)
+    motor_right.run_forever(speed_sp=speed_sp)
+
+    while sonar.value() > pos_final:
+        if abs(sonar.value() - pos_final) < 150.0:
+            motor_left.run_forever(speed_sp=100)
+            motor_right.run_forever(speed_sp=100)
+        if abs(sonar.value() - pos_final) < 70.0:
+            motor_left.run_forever(speed_sp=50)
+            motor_right.run_forever(speed_sp=50)
+        if abs(sonar.value() - pos_final) < 40.0:
+            motor_left.run_forever(speed_sp=20)
+            motor_right.run_forever(speed_sp=20)
+        print(sonar.value())
+    motor_left.stop()
+    motor_right.stop()
 
 def wait_for_motor(motor):
     time.sleep(0.1)         # Make sure that motor has time to start
