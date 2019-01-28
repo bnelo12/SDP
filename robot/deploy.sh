@@ -4,6 +4,9 @@ if [ -n "$1" ]; then
   IP=$1 
 fi
 
-CMD_SCP="scp ./* robot@${IP}:~/"
+HOST="robot@${IP}"
+CMD_SCP="scp ./* ${HOST}:~/"
 echo $CMD_SCP
 eval $CMD_SCP
+
+ssh $HOST "python3 main.py"

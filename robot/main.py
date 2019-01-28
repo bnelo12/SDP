@@ -13,6 +13,14 @@ def prompt():
         move(1000)
     elif cmd == 'back':
         move(1000, speed_sp=-500)
+    elif cmd == 'run':
+        speed = input("What speed do you want to run at?\nSpeed: ")
+        # No input
+        if (len(speed) == 0):
+            speed = 500
+        else:
+            speed = int(speed)
+        move(1000, speed_sp=speed)
     elif cmd == 'left':
         move(500, use_left=True, use_right=False, speed_sp=500)
         move(500, use_left=True, use_right=False, speed_sp=-500)
