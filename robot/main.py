@@ -5,6 +5,19 @@ import time
 sonar = ev3.UltrasonicSensor(ev3.INPUT_1)
 sonar.connected
 sonar.mode = 'US-DIST-CM' # Will return value in mm
+# Set up the motors
+motor_l = ev3.LargeMotor('outA')
+motor_l.connected
+motor_r = ev3.LargeMotor('outD')
+motor_r.connected
+# Motors should brake, not coast
+motor_l.stop_action = 'brake'
+motor_r.stop_action = 'brake'
+# Start and stop immediately
+motor_l.ramp_up_sp = 0
+motor_r.ramp_up_sp = 0
+motor_l.ramp_down_sp = 0
+motor_r.ramp_down_sp = 0
 
 def dev():
     print("{:^30}".format("You are in DEVELOPER mode"))
@@ -26,7 +39,7 @@ def prompt():
             speed = 500
         else:
             speed = int(speed)
-        if (len(time) == 0):
+        if (len(t) == 0):
             t = 1000
         else:
             t = int(t)
@@ -56,50 +69,40 @@ def prompt():
     prompt()
 
 def move(time_sp, use_left=True, use_right=True, speed_sp=500):
-    motor_left = ev3.LargeMotor('outA')
-    motor_left.connected
-    motor_right = ev3.LargeMotor('outD')
-    motor_right.connected
-
     pos_start = sonar.value()
     print("Start position: {:>5.1f}".format(pos_start))
     if use_left:
-        motor_left.run_timed(speed_sp=speed_sp, time_sp=time_sp)
+        motor_l.run_timed(speed_sp=speed_sp, time_sp=time_sp)
     if use_right:
-        motor_right.run_timed(speed_sp=speed_sp, time_sp=time_sp)
+        motor_r.run_timed(speed_sp=speed_sp, time_sp=time_sp)
     print("Motors running for {:.1f} seconds".format(time_sp/1000))
-    wait_for_motor(motor_left)
-    wait_for_motor(motor_right)
+    wait_for_motor(motor_l)
+    wait_for_motor(motor_r)
     print("Motors finished running")
     pos_end = sonar.value()
     print("End position:   {:>5.1f}".format(pos_end))
     print("Position delta: {:>5.1f}".format(pos_end - pos_start))
 
-def move_until(pos_final=100.0, speed_sp=250):
-    motor_left = ev3.LargeMotor('outA')
-    motor_left.connected
-    motor_right = ev3.LargeMotor('outD')
-    motor_right.connected
-
+def move_until(pos_final=100.0):
     delta = abs(sonar.value() - pos_final)
-    while delta > 5.0:
+    while delta > 3.0:
         delta = abs(sonar.value() - pos_final)
-        reverse = -1.0 if pos_final < sonar.value() else 1.0
-        if abs(sonar.value() - pos_final) < 150.0:
-            motor_left.run_forever(speed_sp=100*reverse)
-            motor_right.run_forever(speed_sp=100*reverse)
-        if abs(sonar.value() - pos_final) < 70.0:
-            motor_left.run_forever(speed_sp=50*reverse)
-            motor_right.run_forever(speed_sp=50*reverse)
-        if abs(sonar.value() - pos_final) < 40.0:
-            motor_left.run_forever(speed_sp=20*reverse)
-            motor_right.run_forever(speed_sp=20*reverse)
+        reverse = -1.0 if pos_final > sonar.value() else 1.0
+        if delta < 150.0:
+            motor_l.run_forever(speed_sp=700*reverse)
+            motor_r.run_forever(speed_sp=700*reverse)
+        if delta < 70.0:
+            motor_l.run_forever(speed_sp=400*reverse)
+            motor_r.run_forever(speed_sp=400*reverse)
+        if delta < 40.0:
+            motor_l.run_forever(speed_sp=150*reverse)
+            motor_r.run_forever(speed_sp=150*reverse)
         else:
-            motor_left.run_forever(speed_sp=speed_sp*reverse)
-            motor_right.run_forever(speed_sp=speed_sp*reverse)
+            motor_l.run_forever(speed_sp=speed_sp*reverse)
+            motor_r.run_forever(speed_sp=speed_sp*reverse)
         print(sonar.value())
-    motor_left.stop()
-    motor_right.stop()
+    motor_l.stop()
+    motor_r.stop()
 
 def wait_for_motor(motor):
     time.sleep(0.1)         # Make sure that motor has time to start
