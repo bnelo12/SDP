@@ -83,23 +83,26 @@ def move(time_sp, use_left=True, use_right=True, speed_sp=500):
     print("End position:   {:>5.1f}".format(pos_end))
     print("Position delta: {:>5.1f}".format(pos_end - pos_start))
 
-def move_until(pos_final=100.0):
+def move_until(pos_final=100.0, rel_max_speed=0.8):
     delta = abs(sonar.value() - pos_final)
+    max_speed = min(motor_l.max_speed, motor_r.max_speed) * rel_max_speed
     while delta > 3.0:
         delta = abs(sonar.value() - pos_final)
         reverse = -1.0 if pos_final > sonar.value() else 1.0
-        if delta < 150.0:
-            motor_l.run_forever(speed_sp=700*reverse)
-            motor_r.run_forever(speed_sp=700*reverse)
-        if delta < 70.0:
-            motor_l.run_forever(speed_sp=400*reverse)
-            motor_r.run_forever(speed_sp=400*reverse)
-        if delta < 40.0:
-            motor_l.run_forever(speed_sp=150*reverse)
-            motor_r.run_forever(speed_sp=150*reverse)
+        if delta < 20.0:
+            speed = 0.1 * max_speed * reverse
+        elif delta < 70.0:
+            speed = 0.2 * max_speed * reverse
+        elif delta < 100.0:
+            speed = 0.4 * max_speed * reverse
+        elif delta < 150.0:
+            speed = 0.6 * max_speed * reverse
+        elif delta < 200.0:
+            speed = 0.8 * max_speed * reverse
         else:
-            motor_l.run_forever(speed_sp=speed_sp*reverse)
-            motor_r.run_forever(speed_sp=speed_sp*reverse)
+            speed = 1.0 * max_speed * reverse
+        motor_l.run_forever(speed_sp=speed)
+        motor_r.run_forever(speed_sp=speed)
         print(sonar.value())
     motor_l.stop()
     motor_r.stop()
