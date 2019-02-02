@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { IonButton, IonBody, IonContent} from 'reactionic';
+import { IonButton, IonContent, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle} from '@ionic/react';
 
 
 class App extends Component {
   render() {
     return (
-        <IonBody location={this.props.location} >
-            <IonContent>
-        <IonButton  icon="ion-chevron-right"
-            iconPosition="right"
-            link="/next/page"
-            color="secondary"
-            type="outline"
->Forward</IonButton>
-            </IonContent>
-        </IonBody>
+        <>
+        <IonHeader>
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonMenuButton></IonMenuButton>
+            </IonButtons>
+            <IonTitle>Signup</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+
+        <IonContent>
+            <IonButton>Create</IonButton>
+        </IonContent>
+      </>
     );
   }
 }
