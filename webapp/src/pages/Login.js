@@ -1,19 +1,13 @@
 import React, {Component} from 'react';
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle } from '@ionic/react'
+import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle } from '@ionic/react';
 
+import SignInForm from '../components/SignInForm'
 
 class Login extends Component {
     render() {
         return (
             <div id='login-page'>
-                <IonHeader>
-                    <IonToolbar>
-                        <IonButtons slot='start'>
-                            <IonMenuButton></IonMenuButton>
-                        </IonButtons>
-                        <IonTitle>Login</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
+                <SignInForm/>
             </div>
         );
     }

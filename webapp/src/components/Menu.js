@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { IonMenu, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
 
 const Menu = () => {
