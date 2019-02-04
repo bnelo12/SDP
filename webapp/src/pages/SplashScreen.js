@@ -9,8 +9,8 @@ class SplashScreen extends Component {
     constructor(props) {
         super(props);
         firebase.auth().onAuthStateChanged((user) => {
-            if (user) this.props.history.push('/home');
-            else this.props.history.push('/login');
+            if (user) this.props.history.replace('/home');
+            else this.props.history.replace('/login');
         });
     }
 

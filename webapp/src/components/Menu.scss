@@ -1,0 +1,11 @@
+ion-menu {
+    max-width: 300px!important;
+}
+
+ion-menu > ion-content {
+    --ion-background-color: var(--ion-color-secondary);
+}
+
+ion-menu ion-list-header {
+    color: white;
+}

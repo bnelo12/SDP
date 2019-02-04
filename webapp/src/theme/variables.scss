@@ -20,16 +20,6 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 :root {
-    --ion-color-angular: #ac282b;
-    --ion-color-communication: #8e8d93;
-    --ion-color-tooling: #fe4c52;
-    --ion-color-services: #fd8b2d;
-    --ion-color-design: #fed035;
-    --ion-color-workshop: #69bb7b;
-    --ion-color-food: #3bc7c4;
-    --ion-color-documentation: #b16be3;
-    --ion-color-navigation: #6600cc;
-  
     --ion-color-primary: #EF8354;
     --ion-color-primary-rgb: 56, 128, 255;
     --ion-color-primary-contrast: #ffffff;
@@ -94,60 +84,6 @@
     --ion-color-light-tint: #f5f6f9;
   }
   
-  /* Additional Ionic Colors
-  // --------------------------------------------------
-  // In order to add colors to be used with Ionic components,
-  // the color should be added as a class with the convention `.ion-color-{COLOR}`
-  // where `{COLOR}` is the color to be used on the Ionic component
-  // and each variant is defined for the color. For more information, please see
-  // https://beta.ionicframework.com/docs/theming/advanced
-  */
-  
-  .ion-color-favorite {
-    --ion-color-base: #69bb7b;
-    --ion-color-base-rgb: 105, 187, 123;
-    --ion-color-contrast: #ffffff;
-    --ion-color-contrast-rgb: 255, 255, 255;
-    --ion-color-shade: #5ca56c;
-    --ion-color-tint: #78c288;
-  }
-  
-  .ion-color-twitter {
-    --ion-color-base: #1da1f4;
-    --ion-color-base-rgb: 29, 161, 244;
-    --ion-color-contrast: #ffffff;
-    --ion-color-contrast-rgb: 255, 255, 255;
-    --ion-color-shade: #1a8ed7;
-    --ion-color-tint: #34aaf5;
-  }
-  
-  .ion-color-google {
-    --ion-color-base: #dc4a38;
-    --ion-color-base-rgb: 220, 74, 56;
-    --ion-color-contrast: #ffffff;
-    --ion-color-contrast-rgb: 255, 255, 255;
-    --ion-color-shade: #c24131;
-    --ion-color-tint: #e05c4c;
-  }
-  
-  .ion-color-vimeo {
-    --ion-color-base: #23b6ea;
-    --ion-color-base-rgb: 35, 182, 234;
-    --ion-color-contrast: #ffffff;
-    --ion-color-contrast-rgb: 255, 255, 255;
-    --ion-color-shade: #1fa0ce;
-    --ion-color-tint: #39bdec;
-  }
-  
-  .ion-color-facebook {
-    --ion-color-base: #3b5998;
-    --ion-color-base-rgb: 59, 89, 152;
-    --ion-color-contrast: #ffffff;
-    --ion-color-contrast-rgb: 255, 255, 255;
-    --ion-color-shade: #344e86;
-    --ion-color-tint: #4f6aa2;
-  }
-  
   /* Shared Variables
   // --------------------------------------------------
   // To customize the look and feel of this app, you can override
@@ -158,28 +94,8 @@
   
   :root {
     --ion-headings-font-weight: 100;
-  
-    --ion-color-angular: #ac282b;
-    --ion-color-communication: #8e8d93;
-    --ion-color-tooling: #fe4c52;
-    --ion-color-services: #fd8b2d;
-    --ion-color-design: #fed035;
-    --ion-color-workshop: #69bb7b;
-    --ion-color-food: #3bc7c4;
-    --ion-color-documentation: #b16be3;
-    --ion-color-navigation: #6600cc;
-  }
-  
-  .md {
-    // --ion-toolbar-background: var(--ion-color-primary);
-    // --ion-toolbar-color: #fff;
-    // --ion-toolbar-color-activated: #fff;
     --ion-font-family: 'Quicksand', sans-serif;
   }
-
-  /*
-
-  */
 
   /**
  * Copyright 2017 Google Inc. All Rights Reserved.
