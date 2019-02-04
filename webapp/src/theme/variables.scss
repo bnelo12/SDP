@@ -94,6 +94,9 @@
   
   :root {
     --ion-headings-font-weight: 100;
+    --ion-toolbar-background: var(--ion-color-secondary);
+    --ion-toolbar-color: #fff;
+    --ion-toolbar-color-activated: #fff;
     --ion-font-family: 'Quicksand', sans-serif;
   }
 

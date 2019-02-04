@@ -1,29 +1,30 @@
-import React, {Component} from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from 'react';
+import { AuthenticatedPage } from './AuthenticatedPage';
+import { Route, Redirect } from 'react-router-dom';
 
-import { IonApp, IonSplitPane } from '@ionic/react';
+import { IonApp, IonSplitPane, IonRouterOutlet } from '@ionic/react';
 
-import firebase from "firebase/app";
-import "firebase/auth";
+import Menu from '../components/Menu';
+import Inventory from './Inventory';
+import Browse from './Browse';
+import Return from './Return';
+import Logout from './Logout';
 
-import Menu from '../components/Menu'
 
 class Home extends Component {
-
-    constructor(props) {
-        super(props);
-        firebase.auth().onAuthStateChanged((user) => {
-            if (!user) this.props.history.replace('/login');
-        });
-    }
-
     render() {
         return (
             <IonApp>
                 <IonSplitPane contentId='main'>
                     <Menu/>
                     <div id='main' className='ion-page'>
-                        Hello
+                        <Route path='/' render={ () => (<Redirect to='/home/inventory'/>) }/>
+                        <IonRouterOutlet>
+                            <Route path="/home/browse" component={ Browse } exact={true}/>
+                            <Route path="/home/return" component={ Return } exact={true}/>
+                            <Route path="/home/inventory" component={ Inventory } exact={true}/>
+                            <Route path="/home/logout" component={ Logout } exact={true}/>
+                        </IonRouterOutlet>
                     </div>
                 </IonSplitPane>
             </IonApp>
@@ -31,4 +32,4 @@ class Home extends Component {
     }
 }
 
-export default withRouter(Home);
+export default AuthenticatedPage(Home);
