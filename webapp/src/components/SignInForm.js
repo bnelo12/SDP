@@ -4,30 +4,41 @@ import { IonIcon, IonInput, IonLabel, IonItem, IonButton, IonCard, IonCardConten
 import './SignInForm.scss'
 
 const SignInForm = (props) => {
+
+    const onSubmit = onSubmitFn => event => {
+        event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+
+        onSubmitFn(email, password);
+    }
+
     return (
         <div id="sign-in-form-content">
             <IonCard>
                 <IonCardContent>
-                    <div className="text-box">
-                        <IonItem>
-                            <IonLabel color="primary">Email</IonLabel>
-                            <IonInput
-                                name="email"
-                                type="text"
-                                autocapitalize="off"
-                                required
-                            />
-                        </IonItem>
-                    </div>
-                    <div className="text-box">
-                        <IonItem>
-                            <IonLabel color="primary">Password</IonLabel>
-                            <IonInput name="password" type="password" required/>
-                        </IonItem>
-                    </div>
-                    <IonButton color="primary">
-                        Sign In
-                    </IonButton>
+                    <form onSubmit={onSubmit(props.onSubmit)}>
+                        <div className="text-box">
+                            <IonItem>
+                                <IonLabel color="primary">Email</IonLabel>
+                                <IonInput
+                                    name="email"
+                                    type="text"
+                                    autocapitalize="off"
+                                    required
+                                />
+                            </IonItem>
+                        </div>
+                        <div className="text-box">
+                            <IonItem>
+                                <IonLabel color="primary">Password</IonLabel>
+                                <IonInput name="password" type="password" required/>
+                            </IonItem>
+                        </div>
+                        <IonButton type='submit' color="primary">
+                            Sign In
+                        </IonButton>
+                    </form>
                     <p>Or sign in with one of these</p>
                     <a href='/'>
                         <IonIcon name='logo-facebook'/>
