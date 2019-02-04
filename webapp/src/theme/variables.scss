@@ -17,6 +17,8 @@
 // https://beta.ionicframework.com/docs/theming/color-generator
 */
 
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
 :root {
     --ion-color-angular: #ac282b;
     --ion-color-communication: #8e8d93;
@@ -28,19 +30,19 @@
     --ion-color-documentation: #b16be3;
     --ion-color-navigation: #6600cc;
   
-    --ion-color-primary: #3b5998;
+    --ion-color-primary: #EF8354;
     --ion-color-primary-rgb: 56, 128, 255;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255, 255, 255;
-    --ion-color-primary-shade: #3171e0;
-    --ion-color-primary-tint: #4c8dff;
+    --ion-color-primary-shade: #F8520B;
+    --ion-color-primary-tint: #F4B79D;
   
-    --ion-color-secondary: #0cd1e8;
+    --ion-color-secondary: #2D3142;
     --ion-color-secondary-rgb: 12, 209, 232;
     --ion-color-secondary-contrast: #ffffff;
     --ion-color-secondary-contrast-rgb: 255, 255, 255;
-    --ion-color-secondary-shade: #0bb8cc;
-    --ion-color-secondary-tint: #24d6ea;
+    --ion-color-secondary-shade: #1E2232;
+    --ion-color-secondary-tint: #444B65;
   
     --ion-color-tertiary: #7044ff;
     --ion-color-tertiary-rgb: 112, 68, 255;
@@ -84,7 +86,7 @@
     --ion-color-medium-shade: #86888f;
     --ion-color-medium-tint: #a2a4ab;
   
-    --ion-color-light: #f4f5f8;
+    --ion-color-light: #ffffff;
     --ion-color-light-rgb: 244, 244, 244;
     --ion-color-light-contrast: #000000;
     --ion-color-light-contrast-rgb: 0, 0, 0;
@@ -155,7 +157,7 @@
   */
   
   :root {
-    --ion-headings-font-weight: 300;
+    --ion-headings-font-weight: 100;
   
     --ion-color-angular: #ac282b;
     --ion-color-communication: #8e8d93;
@@ -169,9 +171,10 @@
   }
   
   .md {
-    --ion-toolbar-background: var(--ion-color-primary);
-    --ion-toolbar-color: #fff;
-    --ion-toolbar-color-activated: #fff;
+    // --ion-toolbar-background: var(--ion-color-primary);
+    // --ion-toolbar-color: #fff;
+    // --ion-toolbar-color-activated: #fff;
+    --ion-font-family: 'Quicksand', sans-serif;
   }
 
   /*

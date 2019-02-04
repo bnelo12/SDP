@@ -1,0 +1,29 @@
+#login-page {
+    height: 100vh;
+    --ion-item-background: var(--ion-color-secondary);
+}
+
+#login-page > #background-image {
+    -webkit-filter: blur(4px);
+    -webkit-transform: scale(1.03);    
+    filter: blur(4px);
+    background: linear-gradient(to bottom, #ed82539c 0%, rgba(0, 0, 0, 0.39) 100%), url(../img/login_background.jpg) center center no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.03);
+    opacity: .95;
+    background-size: cover;
+}
+
+#login-page > #sign-in-form {
+    max-width: 522px;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}

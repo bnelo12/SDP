@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle } from '@ionic/react';
 
 import SignInForm from '../components/SignInForm'
+
+import './Login.scss'
 
 class Login extends Component {
     render() {
         return (
             <div id='login-page'>
-                <SignInForm/>
+                <div id='background-image'/>
+                <div id='sign-in-form'>
+                    <SignInForm/>
+                </div>
             </div>
         );
     }
