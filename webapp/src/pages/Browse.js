@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonTitle, IonContent } from '@ionic/react'
 
+import Item from '../components/Item';
 
 class Browse extends Component {
     render() {
@@ -14,8 +15,7 @@ class Browse extends Component {
                         <IonTitle>Browse Items</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <IonContent>
-                </IonContent>
+                <Item image_url="https://media.rs-online.com/t_large/F8111284-01.jpg" name="Raspberry Pi"/>
             </div>
         );
     }
