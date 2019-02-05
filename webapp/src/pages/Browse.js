@@ -31,7 +31,7 @@ class Browse extends Component {
                                 <Item image_url="https://images-na.ssl-images-amazon.com/images/I/71PeyEiixuL._SY355_.jpg" name="Electonics Kit" quantity={10}/>
                             </IonCol>
                             <IonCol size="4">
-                                <Item image_url="https://target.scene7.com/is/image/Target/GUEST_04fe236a-1762-4120-a259-2e41246996ef?wid=488&hei=488&fmt=pjpeg" name="Amazon Echo Dot" quantity={6}/>
+                                <Item image_url="https://target.scene7.com/is/image/Target/GUEST_04fe236a-1762-4120-a259-2e41246996ef?wid=488&hei=488&fmt=pjpeg" name="Amazon Echo Dot" quantity={0}/>
                             </IonCol>
                             <IonCol size="4">
                                 <Item image_url="https://le-www-live-s.legocdn.com/images/423923/live/sc/Products/5003400/5003400_1050x1050_1_xx-xx/63feb014132ef703a7e6d2c600b1d52d/2d9e36d3-afaf-4203-aa23-a58d00d7ca07/original/2d9e36d3-afaf-4203-aa23-a58d00d7ca07.jpg?fit=inside|855:640" name="Lego Mindstorm Kit" quantity={2}/>
