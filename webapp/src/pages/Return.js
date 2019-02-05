@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonTitle } from '@ionic/react'
+import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonTitle, IonContent } from '@ionic/react'
 
 
 class Return extends Component {
     render() {
         return (
-            <div>
+            <>
                 <IonHeader>
                     <IonToolbar>
                         <IonButtons slot="start">
@@ -14,7 +14,9 @@ class Return extends Component {
                         <IonTitle>Return Items</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-            </div>
+                <IonContent>
+                </IonContent>
+            </>
         );
     }
 }

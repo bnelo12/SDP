@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {IonHeader, IonToolbar, IonMenuButton, IonButton, IonButtons, IonTitle, IonCard, IonCardTitle, IonCardContent } from '@ionic/react'
+import {IonHeader, IonToolbar, IonMenuButton, IonButton, IonButtons, IonTitle, IonCard, IonCardTitle, IonCardContent, IonContent } from '@ionic/react'
 
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -15,7 +15,7 @@ class Logout extends Component {
 
     render() {
         return (
-            <div id='logout-page'>
+            <>
                 <IonHeader>
                     <IonToolbar>
                         <IonButtons slot="start">
@@ -24,13 +24,15 @@ class Logout extends Component {
                         <IonTitle>Logout</IonTitle>
                     </IonToolbar>
                 </IonHeader>
-                <IonCard>
-                    <IonCardTitle>Are you sure you want to logout?</IonCardTitle>
-                    <IonCardContent>
-                        <IonButton color='danger' onClick={this.logout}>Logout</IonButton>
-                    </IonCardContent>
-                </IonCard>
-            </div>
+                <IonContent id='logout-page'>
+                    <IonCard>
+                        <IonCardTitle>Are you sure you want to logout?</IonCardTitle>
+                        <IonCardContent>
+                            <IonButton color='danger' onClick={this.logout}>Logout</IonButton>
+                        </IonCardContent>
+                    </IonCard>
+                </IonContent>
+            </>
         );
     }
 }
