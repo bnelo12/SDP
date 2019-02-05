@@ -98,6 +98,14 @@
     --ion-toolbar-color: #fff;
     --ion-toolbar-color-activated: #fff;
     --ion-font-family: 'Quicksand', sans-serif;
+
+    @media only screen and (max-width: 1200px) {
+      --ion-grid-columns: 8;
+    }
+
+    @media only screen and (max-width: 600px) {
+      --ion-grid-columns: 4;
+    }
   }
 
   /**
