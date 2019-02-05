@@ -49,6 +49,59 @@ class Dev:
         elif cmd == 'position':
             final = float(input("Final position: "))
             l.move_to_position(final)
+        elif cmd == 'test tacho backforth':
+            runs = int(input("Number of runs: "))
+            print("Running {} times".format(runs))
+            btn = ev3.Button()
+            for i in range(1, runs + 1):
+                print("Run # "+str(i))
+                l.move_to_position(0)
+                l.wait_for_motors()
+                while not btn.down:
+                    time.sleep(0.2)
+                l.move_to_position(5000)
+                l.wait_for_motors()
+                time.sleep(1.0)
+                l.move_to_position(2000)
+                l.wait_for_motors()
+                time.sleep(1.0)
+                l.move_to_position(3500)
+                l.wait_for_motors()
+                time.sleep(1.0)
+                l.move_to_position(0)
+                l.wait_for_motors()
+                print("Back at initial position")
+        elif cmd == 'test sonar backforth':
+            runs = int(input("Number of runs: "))
+            print("Running {} times".format(runs))
+            btn = ev3.Button()
+            for i in range(1, runs + 1):
+                print("Run # "+str(i))
+                while not btn.down:
+                    time.sleep(0.2)
+                initial = l.sonar.value()
+                time.sleep(2.0)
+                l.move_until(150)
+                l.wait_for_motors()
+                time.sleep(1.0)
+                l.move_until(450)
+                l.wait_for_motors()
+                time.sleep(1.0)
+                l.move_until(250)
+                l.wait_for_motors()
+                time.sleep(1.0)
+                l.move_until(initial)
+                l.wait_for_motors()
+                print("Back at initial position")
+        elif cmd == 'demo':
+            btn = ev3.Button()
+            shelf_distance = 960
+            l.move_to_position(0)
+            l.wait_for_motors()
+            while not btn.down:
+                pos = int(input("Position: "))
+                l.move_to_position(pos * shelf_distance)
+                l.wait_for_motors()
         elif cmd == 'until':
             final = float(input("Final position: "))
             l.move_until(final)

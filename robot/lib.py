@@ -24,10 +24,7 @@ class Lib:
 
     @staticmethod
     def sigmoid(x):
-        res = 1
-        res /= (1 + math.exp(
-            -(0.5 * x - 2)
-        ))
+        res = 1 / (1 + math.exp(-(0.33 * x - 1.5)))
         return res
 
     def move_to_position(self, pos_final, rel_max_speed=0.8):
@@ -39,17 +36,24 @@ class Lib:
         pos_to_cm = lambda pos: pos * (11.0 / 1000.0)
         cm_to_pos = lambda cm:  cm * (1000.0 / 11.0)
 
-        delta = pos_to_cm(abs(pos_final - self.motor_l.position_sp))
+        pos_initial = self.motor_l.position
+
+        delta = pos_to_cm(abs(pos_final - self.motor_l.position))
+        delta_start = pos_to_cm(abs(pos_initial - self.motor_l.position))
         while delta > 1.0:
-            speed = max_speed * self.sigmoid(delta)
-            delta = pos_to_cm(abs(pos_final - self.motor_l.position_sp))
-            self.motor_l.run_to_abs_pos(pos_final, speed)
-            self.motor_r.run_to_abs_pos(pos_final, speed)
+            if delta_start < 5.0 and delta > 5.0:
+                speed = max_speed * (delta_start / 7.0 + 0.1)
+            else:
+                speed = max_speed * self.sigmoid(delta)
+            delta = pos_to_cm(abs(pos_final - self.motor_l.position))
+            delta_start = pos_to_cm(abs(pos_initial - self.motor_l.position))
+            self.motor_l.run_to_abs_pos(position_sp=pos_final, speed_sp=speed)
+            self.motor_r.run_to_abs_pos(position_sp=pos_final, speed_sp=speed)
 
     def move_until(self, pos_final=100.0, rel_max_speed=0.8):
         delta = abs(self.sonar.value() - pos_final)
         max_speed = min(self.motor_l.max_speed, self.motor_r.max_speed) * rel_max_speed
-        while delta > 3.0:
+        while delta > 2.0:
             delta = abs(self.sonar.value() - pos_final)
             reverse = -1.0 if pos_final > self.sonar.value() else 1.0
             if delta < 20.0:
@@ -66,7 +70,6 @@ class Lib:
                 speed = 1.0 * max_speed * reverse
             self.motor_l.run_forever(speed_sp=speed)
             self.motor_r.run_forever(speed_sp=speed)
-            print(self.sonar.value())
         self.motor_l.stop()
         self.motor_r.stop()
 
@@ -75,3 +78,7 @@ class Lib:
         while motor.state==["running"]:             
             print('...')
             time.sleep(0.1)
+    
+    def wait_for_motors(self):
+        self.wait_for_motor(self.motor_l)
+        self.wait_for_motor(self.motor_r)
