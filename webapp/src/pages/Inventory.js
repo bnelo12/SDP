@@ -5,7 +5,7 @@ import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonTitle, IonContent }
 class Inventory extends Component {
     render() {
         return (
-            <div>
+            <div id="inventory-page ion-page">
                 <IonHeader>
                     <IonToolbar>
                         <IonButtons slot="start">
