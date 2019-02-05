@@ -1,4 +1,4 @@
-import time
+import time, math
 from ev3dev import ev3
 
 class Lib:
@@ -21,6 +21,30 @@ class Lib:
         pos_end = self.sonar.value()
         print("End position:   {:>5.1f}".format(pos_end))
         print("Position delta: {:>5.1f}".format(pos_end - pos_start))
+
+    @staticmethod
+    def sigmoid(x):
+        res = 1
+        res /= (1 + math.exp(
+            -(0.5 * x - 2)
+        ))
+        return res
+
+    def move_to_position(self, pos_final, rel_max_speed=0.8):
+        max_speed = min(self.motor_l.max_speed, self.motor_r.max_speed)
+        max_speed *= rel_max_speed
+        
+        # TEMPORARY:
+        # position delta 1000 = 11 cm
+        pos_to_cm = lambda pos: pos * (11.0 / 1000.0)
+        cm_to_pos = lambda cm:  cm * (1000.0 / 11.0)
+
+        delta = pos_to_cm(abs(pos_final - self.motor_l.position_sp))
+        while delta > 1.0:
+            speed = max_speed * self.sigmoid(delta)
+            delta = pos_to_cm(abs(pos_final - self.motor_l.position_sp))
+            self.motor_l.run_to_abs_pos(pos_final, speed)
+            self.motor_r.run_to_abs_pos(pos_final, speed)
 
     def move_until(self, pos_final=100.0, rel_max_speed=0.8):
         delta = abs(self.sonar.value() - pos_final)

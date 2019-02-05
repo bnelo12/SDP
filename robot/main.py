@@ -23,4 +23,4 @@ motor_r.ramp_down_sp = 0
 
 l = Lib(motor_l, motor_r, sonar)
 d = Dev(l)
-d.dev()
+d.run()
