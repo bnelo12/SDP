@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonTitle, IonContent, IonGrid, IonRow, IonCol } from '@ionic/react'
+import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonButton, IonItem, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonFooter } from '@ionic/react'
 
 import Item from '../components/Item';
 
@@ -42,6 +42,13 @@ class Browse extends Component {
                         </IonRow>
                     </IonGrid>
                 </IonContent>
+                <IonFooter>
+                    <IonToolbar>
+                        <IonItem slot="end">
+                            <IonButton color='primary'>Collect</IonButton>
+                        </IonItem>
+                    </IonToolbar>
+                </IonFooter>
             </>
         );
     }
