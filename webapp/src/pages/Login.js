@@ -13,12 +13,15 @@ class Login extends Component {
 
     constructor(props) {
         super(props);
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) this.props.history.replace('/home');
-        });
         this.state = {
             shouldShowInvalidLoginToast: false
         }
+    }
+
+    componentWillMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) this.props.history.replace('/home');
+        });
         this.login = this.login.bind(this);
     }
 

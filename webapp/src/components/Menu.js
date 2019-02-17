@@ -6,7 +6,7 @@ import './Menu.scss'
 
 const routes = {
     navPages: [
-        { title: 'My Inventory', path: '/home/inventory', icon: 'book' },    
+        { title: 'Cart', path: '/home/cart', icon: 'cart' },    
         { title: 'Browse Items', path: '/home/browse', icon: 'list' },
         { title: 'Return Items', path: '/home/return', icon: 'return-left' }
     ],

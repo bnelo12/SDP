@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonTitle, IonContent } from '@ionic/react'
 
 
-class Inventory extends Component {
+class Cart extends Component {
     render() {
         return (
             <>
@@ -11,7 +11,7 @@ class Inventory extends Component {
                         <IonButtons slot="start">
                             <IonMenuButton></IonMenuButton>
                         </IonButtons>
-                        <IonTitle>My Inventory</IonTitle>
+                        <IonTitle>Cart</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonContent>
@@ -21,4 +21,4 @@ class Inventory extends Component {
     }
 }
 
-export default Inventory;
+export default Cart;

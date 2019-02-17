@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import { IonApp, IonSplitPane, IonRouterOutlet } from '@ionic/react';
 
 import Menu from '../components/Menu';
-import Inventory from './Inventory';
+import Cart from './Cart';
 import Browse from './Browse';
 import Return from './Return';
 import Logout from './Logout';
@@ -21,7 +21,7 @@ class Home extends Component {
                         <IonRouterOutlet>
                             <Route path="/home/browse" component={ Browse } exact={true}/>
                             <Route path="/home/return" component={ Return } exact={true}/>
-                            <Route path="/home/inventory" component={ Inventory } exact={true}/>
+                            <Route path="/home/cart" component={ Cart } exact={true}/>
                             <Route path="/home/logout" component={ Logout } exact={true}/>
                         </IonRouterOutlet>
                     </div>
