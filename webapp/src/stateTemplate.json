@@ -1,0 +1,25 @@
+{
+    "user": {
+        // Most data here is provided by Firebase and is unimportant
+    },
+
+    "browseItems": [
+        {
+            "name": "Raspberry Pi",
+            "quantity": "2",
+            "ids": [
+                "3488efae-39e5-4bf7-837b-23a95a652c86",
+                "cd5594c5-5525-479f-8ccb-7d93569cd129"
+            ]
+        }
+    ],
+
+    "cartItems": [
+
+    ],
+
+    "currentItems": [
+
+    ]
+
+}

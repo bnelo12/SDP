@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AuthenticatedPage } from './AuthenticatedPage';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import { IonApp, IonSplitPane, IonRouterOutlet } from '@ionic/react';
 
@@ -18,6 +18,7 @@ class Home extends Component {
                 <IonSplitPane contentId='main'>
                     <Menu/>
                     <div id='main' className='ion-page'>
+                        <Route exact path="/home" render={() => <Redirect to="/home/browse"/>}/>
                         <IonRouterOutlet>
                             <Route path="/home/browse" component={ Browse } exact={true}/>
                             <Route path="/home/return" component={ Return } exact={true}/>
