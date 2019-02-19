@@ -51,7 +51,7 @@ const authenticatedPage = (ComposedComponent) => {
             } else {    
                 return (
                     <div className='authenticated-page'>
-                        <ComposedComponent/>
+                        <ComposedComponent {...this.props}/>
                     </div>
                 );
             }

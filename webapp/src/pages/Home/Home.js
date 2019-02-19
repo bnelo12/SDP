@@ -3,16 +3,23 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { IonApp, IonSplitPane, IonRouterOutlet } from '@ionic/react';
 
-import authenticatedPage from './authenticatedPage';
-
-import Menu from '../components/Menu';
-import Cart from './Cart';
-import Browse from './Browse';
-import Return from './Return';
-import Logout from './Logout';
+import Menu from '../../components/Menu';
+import Cart from '../Cart';
+import Browse from '../Browse';
+import Return from '../Return';
+import Logout from '../Logout';
 
 
 class Home extends Component {
+
+    componentDidMount() {
+        this.props.browseItemsDispatch.subscribeToBrowseItemsData();
+    }
+
+    componentWillUnmount() {
+        this.props.browseItemsDispatch.unsubscribeToBrowseItemsData();
+    }
+
     render() {
         return (
             <IonApp>
@@ -33,4 +40,4 @@ class Home extends Component {
     }
 }
 
-export default authenticatedPage(Home);
+export default Home;
