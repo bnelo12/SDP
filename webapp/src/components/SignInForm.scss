@@ -1,0 +1,47 @@
+#sign-in-form-content {
+    width: 100%;
+    display: block;
+}
+
+#sign-in-form-content ion-button {
+    text-transform: none;
+    --border-radius: 100px;
+    height: 50px;
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 80px;
+    border-radius: 100px;
+}
+
+#sign-in-form-content ion-button:hover {
+    opacity: .90;
+}
+
+#sign-in-form-content .text-box {
+    --ion-item-background: transparent;
+    background-color: var(--ion-color-light);
+    padding: 5px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#sign-in-form-content ion-icon {
+    color: white;
+    font-size: 50px;    
+}
+
+#sign-in-form-content p {
+    color:  var(--ion-color-light);
+    margin: 10px;
+}
+
+#sign-in-form-content a {
+    margin: 0 10px;
+}
+
+#sign-in-form-content .create-account-link {
+    a {
+        color: var(--ion-color-light);
+    }
+    margin: 20px;
+}
