@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { registerIonic } from '@ionic/react';
 import * as serviceWorker from './serviceWorker';
 
 import firebase from "firebase/app";
+
+import store from './store/store';
 
 import App from './App.js';
 
@@ -16,5 +19,9 @@ var config = {
 firebase.initializeApp(config);
 
 registerIonic();
-ReactDOM.render(<App/>, document.getElementById('root'));
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>, document.getElementById('root'));
 serviceWorker.unregister();

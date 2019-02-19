@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { AuthenticatedPage } from './AuthenticatedPage';
 import { Route, Redirect } from 'react-router-dom';
 
 import { IonApp, IonSplitPane, IonRouterOutlet } from '@ionic/react';
+
+import authenticatedPage from './authenticatedPage';
 
 import Menu from '../components/Menu';
 import Cart from './Cart';
@@ -32,4 +33,4 @@ class Home extends Component {
     }
 }
 
-export default AuthenticatedPage(Home);
+export default authenticatedPage(Home);

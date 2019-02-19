@@ -1,20 +1,43 @@
-import C from '../../constants.js';
+import { C } from './actions';
 
 const defaultState = {
-    username: null
+    isSigningIn: false,
+    authChangedListener: null,
+    isAuthenticated: false,
+    authStatusIsKnown: false,
+    userRecord: null
 }
 
 export default (state=defaultState, action) => {
     switch(action.type) {
-        case C.USER_LOGIN:
+        case C.SIGNING_IN:
             return {
                 ...state,
-                username: action.username
+                isSigningIn: true
             }
-        case C.USER_LOGOUT:
+        case C.FINISHED_SIGNING_IN:
             return {
                 ...state,
-                username: null
+                isSigningIn: false
+            }
+        case C.LOG_OUT:
+            return state;
+        case C.AUTH_STATUS_CHANGED:
+            return {
+                ...state,
+                userRecord: action.userRecord,
+                isAuthenticated: !!action.userRecord,
+                authStatusIsKnown: true
+            }
+        case C.ADD_AUTH_CHANGED_LISTENER:
+            return {
+                ...state,
+                authChangedListener: action.listener
+            }
+        case C.REMOVE_AUTH_CHANGED_LISTENER:
+            return {
+                ...state,
+                authChangedListener: null
             }
         default: 
             return state;
