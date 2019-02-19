@@ -6,14 +6,6 @@ import SignInForm from '../../components/SignInForm'
 import './Login.scss'
 
 class Login extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            shouldShowInvalidLoginToast: false
-        }
-    }
-
     
     componentDidMount() {
         this.props.userDispatch.subscribeOnAuthStateChanged();                        
@@ -38,13 +30,13 @@ class Login extends Component {
                     <div id='background-image'/>
                     <div id='sign-in-form'>
                         <IonToast
-                            show={this.state.shouldShowInvalidLoginToast}
+                            show={this.props.invalidLoginToast.shouldShow}
                             color="danger"
                             position="middle"
-                            message="Invalid login credentials"
+                            message={this.props.invalidLoginToast.message}
                             showCloseButton={false}
                             duration={1500}
-                            onIonToastDidDismiss={() => this.setState(() => ({ shouldShowInvalidLoginToast: false }))}
+                            onIonToastDidDismiss={this.props.invalidLoginToast.onDismissCallback}
                         />
                         <SignInForm onSubmit={this.props.userDispatch.login}/>
                     </div>

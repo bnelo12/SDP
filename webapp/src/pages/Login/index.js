@@ -5,9 +5,15 @@ import { login, subscribeOnAuthStateChanged, unsubscribeOnAuthStateChanged } fro
 
 import Login from './Login';
 
+
 const mapStateToProps = state => {
     return { 
-        user: state.user    
+        user: state.user,
+        invalidLoginToast: {
+            shouldShow: state.toasts.shouldShowInvalidLoginToast,
+            message: state.toasts.invalidLoginToastMessage,
+            onDismissCallback: state.toasts.onInvalidLoginToastDidDismissCallback
+        }
     };
 }
 

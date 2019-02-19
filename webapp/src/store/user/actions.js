@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
+import { showInvalidLoginToast } from '../toasts/actions';
 
 export const C = {
     SIGNING_IN: "SIGNING_IN",
@@ -26,6 +27,9 @@ export const unsubscribeOnAuthStateChanged = (unsubscribeCB) => dispatch => {
 export const login = (email, password) => dispatch => {
     dispatch({type: C.SIGNING_IN});
     firebase.auth().signInWithEmailAndPassword(email, password)
+        .catch((error) => {
+            dispatch(showInvalidLoginToast(error.message))
+        })
         .finally(() => {
             dispatch({type: C.FINISHED_SIGNING_IN});
         });
