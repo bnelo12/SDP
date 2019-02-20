@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import authenticatedPage from '../authenticatedPage';
 
-import { subscribeToBrowseItemsData, unsubscribeToBrowseItemsData } from '../../store/browseItems/actions'
+import { subscribeToBrowseItemsData, unsubscribeToBrowseItemsData, handleBrowseItemClicked } from '../../store/browseItems/actions'
 
 import Home from './Home';
 
@@ -16,7 +16,8 @@ const mapDispatchToProps = dispatch => {
             subscribeToBrowseItemsData: function() {
                 dispatch(subscribeToBrowseItemsData());
             },
-            unsubscribeToBrowseItemsData: () => dispatch(unsubscribeToBrowseItemsData())
+            unsubscribeToBrowseItemsData: () => dispatch(unsubscribeToBrowseItemsData()),
+            handleBrowseItemClicked: () => dispatch(handleBrowseItemClicked())
         }
     }
 }

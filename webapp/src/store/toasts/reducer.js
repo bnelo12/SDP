@@ -3,7 +3,12 @@ import { C } from './actions';
 const defaultState = {
     shouldShowInvalidLoginToast: false,
     invalidLoginToastMessage: "",
-    onInvalidLoginToastDidDismissCallback: null
+    onInvalidLoginToastDidDismissCallback: null,
+    addedToCart: {
+        shouldShowToast: false,
+        message: "",
+        onToastDidDismissCallback: null
+    }
 };
 
 export default (state=defaultState, action) => {
@@ -19,6 +24,23 @@ export default (state=defaultState, action) => {
             return {
                 ...state,
                 shouldShowInvalidLoginToast: false,
+            }
+        case C.SHOW_ADDED_TO_CART_TOAST:
+            return {
+                ...state,
+                addedToCart: {
+                    shouldShowToast: true,
+                    message: action.message,
+                    onToastDidDismissCallback: action.callback
+                }
+            }
+        case C.DISMISS_ADDED_TO_CART_TOAST:
+            return {
+                ...state,
+                addedToCart: {
+                    ...state.addedToCart,
+                    shouldShowToast: false
+                }
             }
         default: 
             return state;

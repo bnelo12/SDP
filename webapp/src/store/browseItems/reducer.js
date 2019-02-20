@@ -3,7 +3,8 @@ import { C } from './actions';
 const defaultState = {
     haveReceived: false,
     items: Object.create(null),
-    dataReference: null
+    dataReference: null,
+    isWritingData: false
 };
 
 export default (state=defaultState, action) => {
@@ -27,6 +28,24 @@ export default (state=defaultState, action) => {
                     ...action.items
                 }
             }
+        case C.WRITE: {
+            return {
+                ...state,
+                isWritingData: true
+            }
+        }
+        case C.WRITE_DATA_SUCCESS: {
+            return {
+                ...state,
+                isWritingData: false
+            }
+        }
+        case C.WRITE_DATA_FAIL: {
+            return {
+                ...state,
+                isWritingData: false
+            }
+        }
         default: 
             return state;
     }
