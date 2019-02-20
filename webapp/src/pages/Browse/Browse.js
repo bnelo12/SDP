@@ -49,7 +49,7 @@ class Browse extends Component {
                 <IonFooter>
                     <IonToolbar>
                         <IonItem slot="end">
-                            <IonButton color='primary'>Collect</IonButton>
+                            <IonButton color='primary'>View Cart</IonButton>
                         </IonItem>
                     </IonToolbar>
                 </IonFooter>
