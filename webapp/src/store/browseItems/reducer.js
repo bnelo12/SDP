@@ -28,19 +28,19 @@ export default (state=defaultState, action) => {
                     ...action.items
                 }
             }
-        case C.WRITE: {
+        case C.WRITE_BROWSE_ITEMS_DATA: {
             return {
                 ...state,
                 isWritingData: true
             }
         }
-        case C.WRITE_DATA_SUCCESS: {
+        case C.WRITE_BROWSE_ITEMS_DATA_SUCCESS: {
             return {
                 ...state,
                 isWritingData: false
             }
         }
-        case C.WRITE_DATA_FAIL: {
+        case C.WRITE_BROWSE_ITEMS_DATA_FAIL: {
             return {
                 ...state,
                 isWritingData: false

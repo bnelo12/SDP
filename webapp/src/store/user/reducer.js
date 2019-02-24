@@ -21,7 +21,12 @@ export default (state=defaultState, action) => {
                 isSigningIn: false
             }
         case C.LOG_OUT:
-            return state;
+            return {
+                ...state,
+                isSigningIn: false,
+                isAuthenticated: false,
+                userRecord: null
+            };
         case C.AUTH_STATUS_CHANGED:
             return {
                 ...state,

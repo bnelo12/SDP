@@ -14,6 +14,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.props.browseItemsDispatch.subscribeToBrowseItemsData();
+        this.props.cartDispatch.subscribeToCartData(this.props.user.userRecord.email);
     }
 
     componentWillUnmount() {

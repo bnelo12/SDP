@@ -9,7 +9,7 @@ class Browse extends Component {
 
         const handleItemClick = (key) => {
             if (!isWritingData && items[key].count !== 0) {
-                handleBrowseItemClicked(key);
+                handleBrowseItemClicked(key, items[key], this.props.user);
                 this.props.showAddedToCartToast(`Adding ${items[key].name} to cart.`)                
             }
         }
@@ -49,7 +49,7 @@ class Browse extends Component {
                 <IonFooter>
                     <IonToolbar>
                         <IonItem slot="end">
-                            <IonButton color='primary'>View Cart</IonButton>
+                            <IonButton className='custom' color='secondary' onClick={() => this.props.history.push('/home/cart')}>View Cart</IonButton>
                         </IonItem>
                     </IonToolbar>
                 </IonFooter>

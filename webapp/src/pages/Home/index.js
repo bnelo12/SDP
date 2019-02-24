@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import authenticatedPage from '../authenticatedPage';
 
 import { subscribeToBrowseItemsData, unsubscribeToBrowseItemsData, handleBrowseItemClicked } from '../../store/browseItems/actions'
+import { subscribeToCartData, unsubscribeToCartData } from '../../store/cart/actions';
 
 import Home from './Home';
 
 const mapStateToProps = state => {
-    return {};
+    return {user: state.user};
 }
 
 const mapDispatchToProps = dispatch => {
@@ -18,6 +19,10 @@ const mapDispatchToProps = dispatch => {
             },
             unsubscribeToBrowseItemsData: () => dispatch(unsubscribeToBrowseItemsData()),
             handleBrowseItemClicked: () => dispatch(handleBrowseItemClicked())
+        },
+        cartDispatch: {
+            subscribeToCartData: (user) => dispatch(subscribeToCartData(user)),
+            unsubscribeToCartData: (user) => dispatch(unsubscribeToCartData(user))
         }
     }
 }
