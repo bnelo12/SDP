@@ -1,6 +1,8 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 
+import { addCountToBrowseItem } from "../browseItems/actions";
+
 export const C = {
     ADD_ITEM_TO_CART: "ADD_ITEM_TO_CART",
     RECEIVED_CART_DATA: "RECEIVED_CART_DATA",
@@ -8,7 +10,9 @@ export const C = {
     UNSUBSCRIBE_FROM_CART_DATA: "UNSUBSCRIBE_FROM_CART_DATA",
     WRITE_CART_DATA: "WRITE_CART_DATA",
     WRITE_CART_DATA_SUCCESS: "WRITE_CART_DATA_SUCCESS",
-    WRITE_CART_DATA_FAIL: "WRITE_CART_DATA_FAIL"
+    WRITE_CART_DATA_FAIL: "WRITE_CART_DATA_FAIL",
+    REMOVE_ITEM_FROM_CART: "REMOVE_ITEM_FROM_CART",
+    REMOVE_SINGLE_FROM_CART: "REMOVE_SINGLE_FROM_CART"
 }
 
 export const addItemToCart = (id, item, user) => dispatch => {
@@ -60,4 +64,47 @@ export const unsubscribeToCartData = (reference) => dispatch => {
         reference();
     }
     dispatch({type: C.UNSUBSCRIBE_FROM_CART_DATA})
+}
+
+export const removeItemFromCart = (id, count, user) => dispatch => {
+    var db = firebase.firestore();
+    var ref = db.collection("cart").doc(user);
+    dispatch({type: C.REMOVE_SINGLE_FROM_CART, id});
+    dispatch({type: C.WRITE_CART_DATA});
+    db.runTransaction((transaction) => {
+        return transaction.get(ref).then((doc) => {
+            transaction.update(ref, { 
+                [id]: firebase.firestore.FieldValue.delete()
+            });
+        });
+    }).then(function() {
+        dispatch(addCountToBrowseItem(id, count));
+        dispatch({type: C.WRITE_CART_DATA_SUCCESS});
+    }).catch(function(error) {
+        console.error(error);
+        dispatch({type: C.WRITE_CART_DATA_FAIL});
+    });
+}
+
+export const removeOneFromCart = (id, user) => dispatch => {
+    var db = firebase.firestore();
+    var ref = db.collection("cart").doc(user);
+    dispatch({type: C.REMOVE_SINGLE_FROM_CART, id});
+    dispatch({type: C.WRITE_CART_DATA});
+    db.runTransaction((transaction) => {
+        return transaction.get(ref).then((doc) => {
+            transaction.update(ref, { 
+                [id]: {
+                    name: doc.data()[id].name,
+                    count: doc.data()[id].count - 1
+                }
+            });
+        });
+    }).then(function() {
+        dispatch(addCountToBrowseItem(id, 1));
+        dispatch({type: C.WRITE_CART_DATA_SUCCESS});
+    }).catch(function(error) {
+        console.error(error);
+        dispatch({type: C.WRITE_CART_DATA_FAIL});
+    });
 }

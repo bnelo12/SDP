@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Lottie from 'react-lottie';
 import animationData from '../animations/empty-box.json'
 
-export default class EmptyCart extends Component {
-    render () {
+export default () => {
+    return (() => {
         const options = {
             loop: false,
             autoplay: true,
@@ -29,6 +29,6 @@ export default class EmptyCart extends Component {
                 />
                 <h2>cart is empty</h2>
             </div>
-        );
-    }
+        )
+    })();
 }

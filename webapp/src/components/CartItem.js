@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonItem, IonLabel, IonButton, IonIcon } from '@ionic/react';
 
-export default ({ id, itemName, count }) => (
+export default ({ id, itemName, count, onRemove, onRemoveSingle }) => (
     <IonItem>
         <IonLabel>
             <h2>{ itemName }</h2>
@@ -11,12 +11,12 @@ export default ({ id, itemName, count }) => (
         <div slot='end'>
             { 
                 count > 1 ? (
-                    <IonButton title="Remove One" shape="round" fill="none" size="large">
+                    <IonButton title="Remove One" shape="round" fill="none" size="large" onClick={ () => onRemoveSingle(id, 1) }>
                         <IonIcon name="remove" color="dark"/>
                     </IonButton>
                 ) : null
             }
-            <IonButton title='Remove All' shape="round" fill="none" size="large">
+            <IonButton title='Remove All' shape="round" fill="none" size="large" onClick={ () => onRemove(id, count) }>
                 <IonIcon name="close" color="dark"/>
             </IonButton>
         </div>

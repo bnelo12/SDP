@@ -64,6 +64,23 @@ export default (state=defaultState, action) => {
                 ...state,
                 isWritingData: false
             }
+        case C.REMOVE_ITEM_FROM_CART:
+            const newState = {
+                ...state,
+            }
+            delete newState.items[action.id]
+            return newState
+        case C.REMOVE_SINGLE_FROM_CART:
+            return {
+                ...state,
+                items: {
+                    ...state.items,
+                    [action.id]: {
+                        count: state.items[action.id].count - 1,
+                        name: state.items[action.id].name
+                    }
+                }
+            }
         default: return state;
     }
 }
