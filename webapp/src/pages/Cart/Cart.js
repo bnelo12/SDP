@@ -50,7 +50,7 @@ class Cart extends Component {
                 <IonFooter>
                     <IonToolbar>
                         <IonItem slot="end">
-                            <IonButton className='custom' color='secondary'>Collect</IonButton>
+                            <IonButton class='custom' color='secondary'>Collect</IonButton>
                         </IonItem>
                     </IonToolbar>
                 </IonFooter>

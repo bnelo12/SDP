@@ -49,7 +49,8 @@ class Browse extends Component {
                 <IonFooter>
                     <IonToolbar>
                         <IonItem slot="end">
-                            <IonButton className='custom' color='secondary' onClick={() => this.props.history.push('/home/cart')}>View Cart</IonButton>
+                            {/* <IonButton size='large' shape='round' color='secondary' onClick={() => this.props.history.push('/home/cart')}>View Cart</IonButton> */}
+                            <IonButton class='custom' color='secondary' onClick={() => this.props.history.push('/home/cart')}>View Cart</IonButton>
                         </IonItem>
                     </IonToolbar>
                 </IonFooter>
