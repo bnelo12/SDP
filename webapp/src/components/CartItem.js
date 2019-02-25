@@ -11,7 +11,10 @@ export default ({ id, itemName, count, onRemove, onRemoveSingle }) => (
         <div slot='end'>
             { 
                 count > 1 ? (
-                    <IonButton title="Remove One" shape="round" fill="none" size="large" onClick={ () => onRemoveSingle(id, 1) }>
+                    <IonButton title="Remove One" shape="round" fill="none" size="large" onClick={ (ev) => {
+                        ev.stopPropagation();
+                        onRemoveSingle(id, 1);
+                    } }>
                         <IonIcon name="remove" color="dark"/>
                     </IonButton>
                 ) : null

@@ -69,7 +69,7 @@ export const unsubscribeToCartData = (reference) => dispatch => {
 export const removeItemFromCart = (id, count, user) => dispatch => {
     var db = firebase.firestore();
     var ref = db.collection("cart").doc(user);
-    dispatch({type: C.REMOVE_SINGLE_FROM_CART, id});
+    dispatch({type: C.REMOVE_ITEM_FROM_CART, id});
     dispatch({type: C.WRITE_CART_DATA});
     db.runTransaction((transaction) => {
         return transaction.get(ref).then((doc) => {

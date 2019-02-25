@@ -5,7 +5,7 @@ import animationData from '../animations/empty-box.json'
 export default () => {
     return (() => {
         const options = {
-            loop: false,
+            loop: true,
             autoplay: true,
             animationData,
             rendererSettings: {
