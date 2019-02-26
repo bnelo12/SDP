@@ -14,7 +14,7 @@ class Browse extends Component {
             }
         }
 
-        const renderItems = Object.keys(items).map((key) => (
+        const renderItems = Object.keys(items).sort().map((key) => (
             <IonCol key={key} size="4">
                 <Item id={key} image_url={items[key].imageURL} name={items[key].name} quantity={items[key].count} onClick={() => handleItemClick(key)}/>
             </IonCol>
@@ -49,7 +49,7 @@ class Browse extends Component {
                 <IonFooter>
                     <IonToolbar>
                         <IonItem slot="end">
-                            <IonButton className='custom' color='secondary' onClick={() => this.props.history.push('/home/cart')}>View Cart</IonButton>
+                            <IonButton class='custom' color='secondary' onClick={() => this.props.history.push('/home/cart')}>View Cart</IonButton>
                         </IonItem>
                     </IonToolbar>
                 </IonFooter>

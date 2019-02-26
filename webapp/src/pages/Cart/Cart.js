@@ -11,7 +11,7 @@ class Cart extends Component {
         const { items, haveReceived } = this.props.cart;
         const { email } = this.props;
 
-        const renderItems = Object.keys(items).map((key) => (
+        const renderItems = Object.keys(items).sort().map((key) => (
             <CartItem
                 key={ key } 
                 id={ key } 
@@ -50,7 +50,7 @@ class Cart extends Component {
                 <IonFooter>
                     <IonToolbar>
                         <IonItem slot="end">
-                            <IonButton className='custom' color='secondary'>Collect</IonButton>
+                            <IonButton class='custom' color='secondary'>Collect</IonButton>
                         </IonItem>
                     </IonToolbar>
                 </IonFooter>

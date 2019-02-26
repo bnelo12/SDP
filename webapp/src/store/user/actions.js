@@ -8,20 +8,20 @@ export const C = {
     FINISHED_SIGNING_IN: "FINISHED_SIGNING_IN",
     LOG_OUT: "LOG_OUT",
     AUTH_STATUS_CHANGED: "AUTH_STATUS_CHANGED",
-    ADD_AUTH_CHANGED_LISTENER: "ADD_AUTH_CHANGED_LISTENER",
-    REMOVE_AUTH_CHANGED_LISTENER: "REMOVE_AUTH_CHANGED_LISTENER",
+    SUBSCRIBE_TO_AUTH_STATE: "SUBSCRIBE_TO_AUTH_STATE",
+    UNSUBSCRIBE_TO_AUTH_STATE: "UNSUBSCRIBE_TO_AUTH_STATE",
 }
 
 export const subscribeOnAuthStateChanged = () => dispatch => {
     var listener = firebase.auth().onAuthStateChanged((userRecord) => {
         dispatch({type: C.AUTH_STATUS_CHANGED, userRecord});
     });
-    dispatch({type: C.ADD_AUTH_CHANGED_LISTENER, listener});
+    dispatch({type: C.SUBSCRIBE_TO_AUTH_STATE, listener});
 }
 
 export const unsubscribeOnAuthStateChanged = (unsubscribeCB) => dispatch => {
     unsubscribeCB();
-    dispatch({type: C.REMOVE_AUTH_CHANGED_LISTENER});
+    dispatch({type: C.UNSUBSCRIBE_TO_AUTH_STATE});
 }
 
 export const login = (email, password) => dispatch => {

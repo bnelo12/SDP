@@ -34,12 +34,12 @@ export default (state=defaultState, action) => {
                 isAuthenticated: !!action.userRecord,
                 authStatusIsKnown: true
             }
-        case C.ADD_AUTH_CHANGED_LISTENER:
+        case C.SUBSCRIBE_TO_AUTH_STATE:
             return {
                 ...state,
                 authChangedListener: action.listener
             }
-        case C.REMOVE_AUTH_CHANGED_LISTENER:
+        case C.UNSUBSCRIBE_TO_AUTH_STATE:
             return {
                 ...state,
                 authChangedListener: null
