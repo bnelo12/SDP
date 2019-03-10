@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { withToastManager } from 'react-toast-notifications';
 
-import { C, login, subscribeOnAuthStateChanged, unsubscribeOnAuthStateChanged, finishedAddingInvalidLoginToast } from '../../store/user/actions';
+import { C, login, subscribeOnAuthStateChanged, unsubscribeOnAuthStateChanged } from '../../store/user/actions';
 
 import Login from './Login';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonButton, IonItem, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonFooter, IonToast } from '@ionic/react'
+import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonButton, IonItem, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonFooter } from '@ionic/react'
 
 import Item from '../../components/Item';
 
