@@ -5,7 +5,9 @@ const defaultState = {
     authChangedListener: null,
     isAuthenticated: false,
     authStatusIsKnown: false,
-    userRecord: null
+    userRecord: null,
+    addInvalidLoginToast: false,
+    invalidLoginToastMessage: ""
 }
 
 export default (state=defaultState, action) => {
@@ -44,6 +46,18 @@ export default (state=defaultState, action) => {
                 ...state,
                 authChangedListener: null
             }
+        case C.ADD_INVALID_LOGIN_TOAST:
+            return {
+                ...state,
+                addInvalidLoginToast: true,
+                invalidLoginToastMessage: action.message
+            }
+        case C.FINISHED_ADDING_INVALID_LOGIN_TOAST:
+        return {
+            ...state,
+            addInvalidLoginToast: false,
+            invalidLoginToastMessage: ""
+        }
         default: 
             return state;
     }

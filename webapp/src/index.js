@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ToastProvider } from 'react-toast-notifications';
 import { registerIonic } from '@ionic/react';
 import * as serviceWorker from './serviceWorker';
 
@@ -22,6 +23,8 @@ registerIonic();
 
 ReactDOM.render(
     <Provider store={store}>
-        <App/>
+        <ToastProvider>
+            <App/>
+        </ToastProvider>
     </Provider>, document.getElementById('root'));
 serviceWorker.unregister();

@@ -5,12 +5,12 @@ import Item from '../../components/Item';
 
 class Browse extends Component {
     render() {
-        const { items, handleBrowseItemClicked, isWritingData } = this.props;
+        const { items, handleBrowseItemClicked, isWritingData, toastManager } = this.props;
 
         const handleItemClick = (key) => {
             if (!isWritingData && items[key].count !== 0) {
                 handleBrowseItemClicked(key, items[key], this.props.user);
-                this.props.showAddedToCartToast(`Adding ${items[key].name} to cart.`)                
+                toastManager.add(`Added ${items[key].name} to cart.`, {appearance: "success", autoDismiss: true, autoDismissTimeout: 3000})                
             }
         }
 
@@ -22,15 +22,6 @@ class Browse extends Component {
 
         return (
             <>
-                <IonToast
-                    show={this.props.addedToCartToast.shouldShowToast}
-                    color="primary"
-                    position="top"
-                    message={this.props.addedToCartToast.message}
-                    showCloseButton={false}
-                    duration={1000}
-                    onIonToastDidDismiss={this.props.addedToCartToast.onToastDidDismissCallback}
-                />
                 <IonHeader>
                     <IonToolbar>
                         <IonButtons slot="start">

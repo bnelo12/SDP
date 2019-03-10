@@ -1,8 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
-import { showInvalidLoginToast } from '../toasts/actions';
-
 export const C = {
     SIGNING_IN: "SIGNING_IN",
     FINISHED_SIGNING_IN: "FINISHED_SIGNING_IN",
@@ -10,6 +8,8 @@ export const C = {
     AUTH_STATUS_CHANGED: "AUTH_STATUS_CHANGED",
     SUBSCRIBE_TO_AUTH_STATE: "SUBSCRIBE_TO_AUTH_STATE",
     UNSUBSCRIBE_TO_AUTH_STATE: "UNSUBSCRIBE_TO_AUTH_STATE",
+    ADD_INVALID_LOGIN_TOAST: "ADD_INVALID_LOGIN_TOAST",
+    FINISHED_ADDING_INVALID_LOGIN_TOAST: "FINISHED_ADDING_INVALID_LOGIN_TOAST"    
 }
 
 export const subscribeOnAuthStateChanged = () => dispatch => {
@@ -28,7 +28,7 @@ export const login = (email, password) => dispatch => {
     dispatch({type: C.SIGNING_IN});
     firebase.auth().signInWithEmailAndPassword(email, password)
         .catch((error) => {
-            dispatch(showInvalidLoginToast(error.message))
+           dispatch(addInvalidLoginToast(error.message))
         })
         .finally(() => {
             dispatch({type: C.FINISHED_SIGNING_IN});
@@ -38,4 +38,12 @@ export const login = (email, password) => dispatch => {
 export const logout = () => dispatch => {
     dispatch({type: C.LOG_OUT});    
     firebase.auth().signOut();
+}
+
+export const finishedAddingInvalidLoginToast = () => dispatch => {
+    dispatch({type: C.FINISHED_ADDING_INVALID_LOGIN_TOAST});  
+}
+
+export const addInvalidLoginToast = (message) => dispatch => {
+    dispatch({type: C.ADD_INVALID_LOGIN_TOAST, message});
 }
