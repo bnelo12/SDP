@@ -43,7 +43,7 @@ const SignInForm = (props) => {
                         <IonButton onClick={(ev) => {ev.stopPropagation(); props.onSignInWithFacebook();}} class="provider" fill="clear" slot="icon-only">
                             <IonIcon name='logo-facebook'/>
                         </IonButton>
-                        <IonButton class="provider" fill="clear" slot="icon-only">
+                        <IonButton onClick={(ev) => {ev.stopPropagation(); props.onSignInWithGoogle();}} class="provider" fill="clear" slot="icon-only">
                             <IonIcon name='logo-google'/>
                         </IonButton>
                     </span>

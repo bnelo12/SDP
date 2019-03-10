@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { withToastManager } from 'react-toast-notifications';
 
-import { C, login, subscribeOnAuthStateChanged, unsubscribeOnAuthStateChanged } from '../../store/user/actions';
+import { C, login, subscribeOnAuthStateChanged, unsubscribeOnAuthStateChanged, signInWithFacebook, signInWithGoogle } from '../../store/user/actions';
 
 import Login from './Login';
 
@@ -25,7 +25,9 @@ const mapDispatchToProps = dispatch => {
             unsubscribeOnAuthStateChanged: function(unsubscribe) {
                 dispatch(unsubscribeOnAuthStateChanged(unsubscribe));
             },
-            finishedAddingInvalidLoginToast: () => dispatch({type: C.FINISHED_ADDING_INVALID_LOGIN_TOAST})
+            finishedAddingInvalidLoginToast: () => dispatch({type: C.FINISHED_ADDING_INVALID_LOGIN_TOAST}),
+            signInWithFacebook: () => dispatch(signInWithFacebook()),
+            signInWithGoogle: () => dispatch(signInWithGoogle())
         }
     }
 }

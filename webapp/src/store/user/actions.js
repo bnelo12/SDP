@@ -47,3 +47,21 @@ export const finishedAddingInvalidLoginToast = () => dispatch => {
 export const addInvalidLoginToast = (message) => dispatch => {
     dispatch({type: C.ADD_INVALID_LOGIN_TOAST, message});
 }
+
+export const signInWithFacebook = () => dispatch => {
+    var provider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+        .catch(function(error) {
+            var errorMessage = error.message;
+            dispatch(addInvalidLoginToast(errorMessage));
+        });         
+}
+
+export const signInWithGoogle = () => dispatch => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+        .catch(function(error) {
+            var errorMessage = error.message;
+            dispatch(addInvalidLoginToast(errorMessage));
+        });     
+}

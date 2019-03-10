@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 
-import firebase from "firebase/app";
-import "firebase/auth";
-
 import SignInForm from '../../components/SignInForm'
 
 import './Login.scss'
@@ -30,19 +27,7 @@ class Login extends Component {
     }
 
     render() {
-        const { toastManager } = this.props;        
-
-        const signInWithFacebook = () => {
-            var provider = new firebase.auth.FacebookAuthProvider();
-            firebase.auth().signInWithPopup(provider).then(function(result) {
-                var token = result.credential.accessToken;
-                var user = result.user;
-            }).catch(function(error) {
-                var errorMessage = error.message;
-                toastManager.add(errorMessage, {appearance: "error", autoDismiss: true, autoDismissTimeout: 5000});
-            });         
-        }
-
+        const { signInWithFacebook, signInWithGoogle } = this.props.userDispatch;
         if (!this.props.user.authStatusIsKnown || this.props.user.isAuthenticated) {
             return null;
         } else {        
@@ -50,7 +35,7 @@ class Login extends Component {
                 <div id='login-page'>
                     <div id='background-image'/>
                     <div id='sign-in-form'>
-                        <SignInForm onSubmit={this.props.userDispatch.login} onSignInWithFacebook={signInWithFacebook} />
+                        <SignInForm onSubmit={this.props.userDispatch.login} onSignInWithFacebook={signInWithFacebook} onSignInWithGoogle={signInWithGoogle} />
                     </div>
                 </div>
             );
