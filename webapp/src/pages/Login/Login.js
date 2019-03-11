@@ -35,7 +35,11 @@ class Login extends Component {
                 <div id='login-page'>
                     <div id='background-image'/>
                     <div id='sign-in-form'>
-                        <SignInForm onSubmit={this.props.userDispatch.login} onSignInWithFacebook={signInWithFacebook} onSignInWithGoogle={signInWithGoogle} />
+                        <SignInForm 
+                            onSubmit={this.props.userDispatch.login}
+                            onSignInWithFacebook={signInWithFacebook}
+                            onSignInWithGoogle={signInWithGoogle}
+                        />
                     </div>
                 </div>
             );

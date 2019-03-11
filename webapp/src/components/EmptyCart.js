@@ -14,7 +14,6 @@ export default () => {
         }
 
         const style = {
-            padding: "100px",
             textAlign: "center"
         }
 

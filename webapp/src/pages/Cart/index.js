@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withToastManager  } from 'react-toast-notifications';
 
 import Cart from './Cart';
 
@@ -18,4 +19,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(withToastManager(Cart));

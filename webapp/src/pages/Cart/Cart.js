@@ -8,15 +8,17 @@ class Cart extends Component {
 
     render() {
 
-        const { items, haveReceived } = this.props.cart;
-        const { email } = this.props;
+        const { items, haveReceived, isWritingData } = this.props.cart;
+        const { email, toastManager } = this.props;
 
         const renderItems = Object.keys(items).sort().map((key) => (
             <CartItem
                 key={ key } 
                 id={ key } 
                 itemName={ items[key].name } 
-                count={ items[key].count } 
+                count={ items[key].count }
+                canRemove={!isWritingData}
+                toastManager={toastManager}
                 onRemove={ (id, count) => this.props.removeItemFromCart(id, count, email) }
                 onRemoveSingle={ (id) => this.props.removeOneFromCart(id, email) }
                 />
