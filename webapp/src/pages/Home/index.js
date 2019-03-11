@@ -4,7 +4,7 @@ import authenticatedPage from '../authenticatedPage';
 
 import { subscribeToBrowseItemsData, unsubscribeToBrowseItemsData, handleBrowseItemClicked } from '../../store/browseItems/actions'
 import { subscribeToCartData, unsubscribeToCartData } from '../../store/cart/actions';
-import { cancelOrder } from '../../store/queue/actions';
+import { cancelOrder, subscribeToQueueData, unsubscribeFromQueueData } from '../../store/queue/actions';
 
 import Home from './Home';
 
@@ -29,7 +29,9 @@ const mapDispatchToProps = dispatch => {
             unsubscribeToCartData: (user) => dispatch(unsubscribeToCartData(user))
         },
         queueDispatch: {
-            cancelOrder: (user) => dispatch(cancelOrder(user))
+            cancelOrder: (user) => dispatch(cancelOrder(user)),
+            subscribeToQueueData: () => dispatch(subscribeToQueueData()),
+            unsubscribeFromQueueData: (reference) => dispatch(unsubscribeFromQueueData(reference))
         }
     }
 }

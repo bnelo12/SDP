@@ -17,10 +17,12 @@ class Home extends Component {
     componentDidMount() {
         this.props.browseItemsDispatch.subscribeToBrowseItemsData();
         this.props.cartDispatch.subscribeToCartData(this.props.user.userRecord.email);
+        this.props.queueDispatch.subscribeToQueueData();
     }
 
     componentWillUnmount() {
         this.props.browseItemsDispatch.unsubscribeToBrowseItemsData();
+        this.props.queueDispatch.unsubscribeFromQueueData(this.props.queue.dataReference);
     }
 
     render() {
