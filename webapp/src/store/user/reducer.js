@@ -7,7 +7,8 @@ const defaultState = {
     authStatusIsKnown: false,
     userRecord: null,
     addInvalidLoginToast: false,
-    invalidLoginToastMessage: ""
+    invalidLoginToastMessage: "",
+    createAccountShouldShow: false
 }
 
 export default (state=defaultState, action) => {
@@ -53,11 +54,21 @@ export default (state=defaultState, action) => {
                 invalidLoginToastMessage: action.message
             }
         case C.FINISHED_ADDING_INVALID_LOGIN_TOAST:
-        return {
-            ...state,
-            addInvalidLoginToast: false,
-            invalidLoginToastMessage: ""
-        }
+            return {
+                ...state,
+                addInvalidLoginToast: false,
+                invalidLoginToastMessage: ""
+            }
+        case C.SHOW_CREATE_ACCOUNT:
+            return {
+                ...state,
+                createAccountShouldShow: true
+            }
+        case C.SHOW_LOGIN:
+            return {
+                ...state,
+                createAccountShouldShow: false
+            }
         default: 
             return state;
     }

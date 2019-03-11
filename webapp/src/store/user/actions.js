@@ -9,7 +9,9 @@ export const C = {
     SUBSCRIBE_TO_AUTH_STATE: "SUBSCRIBE_TO_AUTH_STATE",
     UNSUBSCRIBE_TO_AUTH_STATE: "UNSUBSCRIBE_TO_AUTH_STATE",
     ADD_INVALID_LOGIN_TOAST: "ADD_INVALID_LOGIN_TOAST",
-    FINISHED_ADDING_INVALID_LOGIN_TOAST: "FINISHED_ADDING_INVALID_LOGIN_TOAST"    
+    FINISHED_ADDING_INVALID_LOGIN_TOAST: "FINISHED_ADDING_INVALID_LOGIN_TOAST",
+    SHOW_CREATE_ACCOUNT: "SHOW_CREATE_ACCOUNT",
+    SHOW_LOGIN: "SHOW_LOGIN"
 }
 
 export const subscribeOnAuthStateChanged = () => dispatch => {
@@ -64,4 +66,13 @@ export const signInWithGoogle = () => dispatch => {
             var errorMessage = error.message;
             dispatch(addInvalidLoginToast(errorMessage));
         });     
+}
+
+export const signUp = (email, password) => dispatch => {
+    console.log(email, password)
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .catch(function(error) {
+        var errorMessage = error.message;
+        dispatch(addInvalidLoginToast(errorMessage));
+    });     
 }

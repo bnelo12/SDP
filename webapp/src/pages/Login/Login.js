@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import ReactCardFlip from 'react-card-flip';
 
 import SignInForm from '../../components/SignInForm'
+import SignUpForm from '../../components/SignUpForm'
 
 import './Login.scss'
 
@@ -28,19 +30,30 @@ class Login extends Component {
 
     render() {
         const { signInWithFacebook, signInWithGoogle } = this.props.userDispatch;
+        const { toastManager } = this.props;
         if (!this.props.user.authStatusIsKnown || this.props.user.isAuthenticated) {
             return null;
         } else {        
             return (
                 <div id='login-page'>
                     <div id='background-image'/>
-                    <div id='sign-in-form'>
-                        <SignInForm 
-                            onSubmit={this.props.userDispatch.login}
-                            onSignInWithFacebook={signInWithFacebook}
-                            onSignInWithGoogle={signInWithGoogle}
-                        />
-                    </div>
+                    <ReactCardFlip isFlipped={this.props.user.createAccountShouldShow}>
+                        <div id='sign-in-form' key="front">
+                            <SignInForm 
+                                onSubmit={this.props.userDispatch.login}
+                                onSignInWithFacebook={signInWithFacebook}
+                                onSignInWithGoogle={signInWithGoogle}
+                                onCreateAccount={this.props.userDispatch.showCreateAccount}
+                            />
+                        </div>
+                        <div id='sign-up-form' key="back">
+                            <SignUpForm
+                                onReturn={this.props.userDispatch.hideCreateAccount}
+                                onSubmit={this.props.userDispatch.signUp}
+                                toastManager={toastManager}
+                            />
+                        </div>
+                    </ReactCardFlip>
                 </div>
             );
         }

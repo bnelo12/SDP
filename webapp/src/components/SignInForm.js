@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonIcon, IonInput, IonLabel, IonItem, IonButton, IonCard, IonCardContent } from '@ionic/react';
+import { IonIcon, IonInput, IonItem, IonButton, IonCard, IonCardContent } from '@ionic/react';
 
 import './SignInForm.scss'
 
@@ -19,8 +19,8 @@ const SignInForm = (props) => {
                     <form onSubmit={onSubmit(props.onSubmit)}>
                         <div className="text-box">
                             <IonItem>
-                                <IonLabel color="primary">Email</IonLabel>
                                 <IonInput
+                                    placeholder="Email"
                                     name="email"
                                     type="text"
                                     autocapitalize="off"
@@ -30,8 +30,7 @@ const SignInForm = (props) => {
                         </div>
                         <div className="text-box">
                             <IonItem>
-                                <IonLabel color="primary">Password</IonLabel>
-                                <IonInput name="password" type="password" required/>
+                                <IonInput placeholder="Password" name="password" type="password" required/>
                             </IonItem>
                         </div>
                         <IonButton class="custom" type='submit' color="primary">
@@ -47,9 +46,9 @@ const SignInForm = (props) => {
                             <IonIcon name='logo-google'/>
                         </IonButton>
                     </span>
-                    <div className='create-account-link'>
-                        <a href='/'>create account</a>
-                    </div>
+                    <IonButton onClick={(ev) => {ev.stopPropagation(); props.onCreateAccount();}} class="create-account-button" fill="clear" slot="icon-only">
+                        create account
+                    </IonButton>
                 </IonCardContent>
             </IonCard>
         </div>

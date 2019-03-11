@@ -18,6 +18,16 @@
     height: 50px;
 }
 
+.create-account-button {
+    display: block;
+    text-transform: none;
+    color: var(--ion-color-light);
+}
+
+#sign-in-form-content ion-card {
+    height: 400px;
+}
+
 #sign-in-form-content ion-button:hover {
     opacity: .90;
 }
