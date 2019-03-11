@@ -1,0 +1,43 @@
+#queue {
+    width: 100vw;
+    height: 100vh;
+    top: -100vh;
+    position: absolute;
+    background-color: var(--ion-color-primary);
+    z-index: 10;
+}
+
+#queue #content {
+    text-align: center;
+    margin-top: 35vh;
+}
+
+#queue #cancel-order-button {
+    width: 200px;
+    text-transform: none;
+    color: var(--ion-color-light);
+}
+
+#queue.closing {
+    animation: slide-up .5s ease-out forwards;
+}
+
+#queue.opening {
+    animation: slide-down .75s linear forwards;
+}
+
+@keyframes slide-down {
+    0%    { transform: translateY(0); }
+    14%   { transform: translateY(4vh); }
+    28%   { transform: translateY(16vh); }
+    42%   { transform: translateY(36vh); }
+    56%   { transform: translateY(64vh); }
+    70%  { transform: translateY(100vh); }
+    85%  { transform: translateY(96vh); }
+    100%  { transform: translateY(100vh); }
+}
+
+@keyframes slide-up {
+    0%    { transform: translateY(100vh); }
+    100%  { transform: translateY(0); }
+}

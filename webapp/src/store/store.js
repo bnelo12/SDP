@@ -5,11 +5,12 @@ import logger from 'redux-logger';
 import user from './user/reducer';
 import browseItems from './browseItems/reducer';
 import cart from './cart/reducer';
+import queue from './queue/reducer';
 
 const middlewares = [thunkMiddleware, logger];
 
 const rootReducer = combineReducers(
-    {user, browseItems, cart}
+    {user, browseItems, cart, queue}
 )
 
 const store = createStore(

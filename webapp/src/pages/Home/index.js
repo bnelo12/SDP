@@ -8,7 +8,10 @@ import { subscribeToCartData, unsubscribeToCartData } from '../../store/cart/act
 import Home from './Home';
 
 const mapStateToProps = state => {
-    return {user: state.user};
+    return {
+        user: state.user,
+        queue: state.queue
+    };
 }
 
 const mapDispatchToProps = dispatch => {

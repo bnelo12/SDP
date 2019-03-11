@@ -10,6 +10,7 @@ class Cart extends Component {
 
         const { items, haveReceived, isWritingData } = this.props.cart;
         const { email, toastManager } = this.props;
+        const { showQueue } = this.props;
 
         const renderItems = Object.keys(items).sort().map((key) => (
             <CartItem
@@ -52,7 +53,11 @@ class Cart extends Component {
                 <IonFooter>
                     <IonToolbar>
                         <IonItem slot="end">
-                            <IonButton class='custom' color='secondary'>Collect</IonButton>
+                            {
+                                renderItems.length > 0 ? (
+                                    <IonButton onClick={(ev) => { ev.stopPropagation(); showQueue(); }} class='custom' color='primary'>Collect</IonButton>
+                                ) : null 
+                            }
                         </IonItem>
                     </IonToolbar>
                 </IonFooter>

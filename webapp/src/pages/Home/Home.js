@@ -9,6 +9,8 @@ import Browse from '../Browse';
 import Return from '../Return';
 import Logout from '../Logout';
 
+import Queue from '../../components/Queue';
+
 
 class Home extends Component {
 
@@ -36,6 +38,9 @@ class Home extends Component {
                         </IonRouterOutlet>
                     </div>
                 </IonSplitPane>
+                <Queue
+                    show={ this.props.queue.shouldShowQueue }
+                />
             </IonApp>
         );
     }
