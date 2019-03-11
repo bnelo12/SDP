@@ -1,7 +1,8 @@
 import { C } from './actions'
 
 const defaultState = {
-    shouldShowQueue: false
+    shouldShowQueue: false,
+    wasOpen: false
 }
 
 export default (state=defaultState, action) => {
@@ -9,6 +10,7 @@ export default (state=defaultState, action) => {
         case C.SHOW_QUEUE:
             return {
                 ...state,
+                wasOpen: true,
                 shouldShowQueue: true
             }
         case C.HIDE_QUEUE:

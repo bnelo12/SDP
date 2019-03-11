@@ -6,3 +6,11 @@ export const C = {
 export const showQueue = () => dispatch => {
     dispatch({type: C.SHOW_QUEUE})
 }
+
+export const hideQueue = () => dispatch => {
+    dispatch({type: C.HIDE_QUEUE})
+}
+
+export const cancelOrder = (user) => dispatch => {
+    dispatch(hideQueue());
+}

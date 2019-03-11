@@ -24,6 +24,7 @@ class Home extends Component {
     }
 
     render() {
+        const {queueDispatch} = this.props;
         return (
             <IonApp>
                 <IonSplitPane contentId='main'>
@@ -39,7 +40,8 @@ class Home extends Component {
                     </div>
                 </IonSplitPane>
                 <Queue
-                    show={ this.props.queue.shouldShowQueue }
+                    queue={ this.props.queue }
+                    onCancelOrder={ queueDispatch.cancelOrder }
                 />
             </IonApp>
         );
