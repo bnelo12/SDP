@@ -6,7 +6,10 @@ export const C = {
     HIDE_QUEUE: "HIDE_QUEUE",
     SUBSCRIBE_TO_QUEUE_DATA: "SUBSCRIBE_TO_QUEUE_DATA",
     UNSUBSCRIBE_FROM_QUEUE_DATA: "UNSUBSCRIBE_FROM_QUEUE_DATA",
-    RECEIVED_QUEUE_DATA: "RECEIVED_QUEUE_DATA"
+    RECEIVED_QUEUE_DATA: "RECEIVED_QUEUE_DATA",
+    WRITE_QUEUE_DATA: "WRITE_QUEUE_DATA",
+    WRITE_QUEUE_DATA_SUCCESS: "WRITE_QUEUE_DATA_SUCCESS",
+    WRITE_QUEUE_DATA_FAIL: "WRITE_QUEUE_DATA_FAIL",
 }
 
 export const showQueue = () => dispatch => {
@@ -35,4 +38,23 @@ export const unsubscribeFromQueueData = (reference) => dispatch => {
         reference();
     }
     dispatch({type: C.UNSUBSCRIBE_FROM_QUEUE_DATA})
+}
+
+export const addUserToQueue = (user) => dispatch => {
+    var db = firebase.firestore();
+    var ref = db.collection("queue").doc("queue");
+    dispatch({type: C.WRITE_QUEUE_DATA});
+    dispatch(showQueue());
+    db.runTransaction((transaction) => {
+        return transaction.get(ref).then((doc) => {
+            var data = doc.data();
+            data.users.push(user);
+            transaction.update(ref, data);
+        });
+    }).then(function() {
+        dispatch({type: C.WRITE_QUEUE_DATA_SUCCESS});
+    }).catch(function(error) {
+        console.error(error);
+        dispatch({type: C.WRITE_QUEUE_DATA_FAIL});
+    });
 }

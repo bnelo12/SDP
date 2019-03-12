@@ -4,7 +4,7 @@ import { withToastManager  } from 'react-toast-notifications';
 import Cart from './Cart';
 
 import { removeItemFromCart, removeOneFromCart } from '../../store/cart/actions';
-import { showQueue } from '../../store/queue/actions';
+import { addUserToQueue } from '../../store/queue/actions';
 
 const mapStateToProps = state => {
     return {
@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => {
     return {
         removeItemFromCart: (id, count, user) => dispatch(removeItemFromCart(id, count, user)),
         removeOneFromCart: (id, user) => dispatch(removeOneFromCart(id, user)),
-        showQueue: () => dispatch(showQueue())
+        addUserToQueue: (user) => dispatch(addUserToQueue(user))
     }
 }
 

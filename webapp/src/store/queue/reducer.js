@@ -38,6 +38,22 @@ export default (state=defaultState, action) => {
                 haveReceived: true,
                 queue: action.queue
             }
+            case C.WRITE_QUEUE_DATA: {
+                return {
+                    ...state,
+                    isWritingData: true
+                }
+            }
+            case C.WRITE_QUEUE_DATA_SUCCESS:
+                return {
+                    ...state,
+                    isWritingData: false
+                }
+            case C.WRITE_QUEUE_DATA_FAIL:
+                return {
+                    ...state,
+                    isWritingData: false
+                }
         default: return state;
     }
 }

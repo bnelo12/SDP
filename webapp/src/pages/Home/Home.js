@@ -43,6 +43,7 @@ class Home extends Component {
                 </IonSplitPane>
                 <Queue
                     queue={ this.props.queue }
+                    email={ this.props.user.userRecord.email }
                     onCancelOrder={ queueDispatch.cancelOrder }
                 />
             </IonApp>

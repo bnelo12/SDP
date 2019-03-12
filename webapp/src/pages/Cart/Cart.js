@@ -10,7 +10,7 @@ class Cart extends Component {
 
         const { items, haveReceived, isWritingData } = this.props.cart;
         const { email, toastManager } = this.props;
-        const { showQueue } = this.props;
+        const { addUserToQueue } = this.props;
 
         const renderItems = Object.keys(items).sort().map((key) => (
             <CartItem
@@ -55,7 +55,7 @@ class Cart extends Component {
                         <IonItem slot="end">
                             {
                                 renderItems.length > 0 ? (
-                                    <IonButton onClick={(ev) => { ev.stopPropagation(); showQueue(); }} class='custom' color='primary'>Collect</IonButton>
+                                    <IonButton onClick={(ev) => { ev.stopPropagation(); addUserToQueue(email); }} class='custom' color='primary'>Collect</IonButton>
                                 ) : null 
                             }
                         </IonItem>

@@ -18,6 +18,13 @@
     color: var(--ion-color-light);
 }
 
+#queue #collect-order-button {
+    width: 200px;
+    text-transform: none;
+    color: var(--ion-color-light);
+    --border-radius: 100px;
+}
+
 #queue.closing {
     animation: slide-up .5s ease-out forwards;
 }
