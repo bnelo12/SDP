@@ -18,15 +18,18 @@ class Home extends Component {
         this.props.browseItemsDispatch.subscribeToBrowseItemsData();
         this.props.cartDispatch.subscribeToCartData(this.props.user.userRecord.email);
         this.props.queueDispatch.subscribeToQueueData();
+        this.props.itemsDispatch.subscribeToItemsData();
+        this.props.itemsDispatch.subscribeToItemsData();
     }
 
     componentWillUnmount() {
         this.props.browseItemsDispatch.unsubscribeToBrowseItemsData();
         this.props.queueDispatch.unsubscribeFromQueueData(this.props.queue.dataReference);
+        this.props.itemsDispatch.unsubscribeFromItemsData(this.props.items.dataReference);
     }
 
     render() {
-        const {queueDispatch} = this.props;
+        const {queueDispatch, orderDispatch} = this.props;
         return (
             <IonApp>
                 <IonSplitPane contentId='main'>
@@ -44,7 +47,10 @@ class Home extends Component {
                 <Queue
                     queue={ this.props.queue }
                     email={ this.props.user.userRecord.email }
+                    items={ this.props.items.items }
+                    cartItems={ this.props.cart.items }
                     onCancelOrder={ queueDispatch.cancelOrder }
+                    submitOrder= { orderDispatch.submitOrder }
                 />
             </IonApp>
         );

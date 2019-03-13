@@ -12,7 +12,8 @@ export const C = {
     WRITE_CART_DATA_SUCCESS: "WRITE_CART_DATA_SUCCESS",
     WRITE_CART_DATA_FAIL: "WRITE_CART_DATA_FAIL",
     REMOVE_ITEM_FROM_CART: "REMOVE_ITEM_FROM_CART",
-    REMOVE_SINGLE_FROM_CART: "REMOVE_SINGLE_FROM_CART"
+    REMOVE_SINGLE_FROM_CART: "REMOVE_SINGLE_FROM_CART",
+    EMPTY_CART: "EMPTY_CART"
 }
 
 export const addItemToCart = (id, item, user) => dispatch => {
@@ -86,6 +87,22 @@ export const removeItemFromCart = (id, count, user) => dispatch => {
     });
 }
 
+export const emptyCart = (user) => dispatch => {
+    var db = firebase.firestore();
+    var ref = db.collection("cart").doc(user);
+    dispatch({type: C.EMPTY_CART});
+    db.runTransaction((transaction) => {
+        return transaction.get(ref).then((doc) => {
+            transaction.set(ref, {});
+        });
+    }).then(function() {
+        dispatch({type: C.WRITE_CART_DATA_SUCCESS});
+    }).catch(function(error) {
+        console.error(error);
+        dispatch({type: C.WRITE_CART_DATA_FAIL});
+    });
+}
+
 export const removeOneFromCart = (id, user) => dispatch => {
     var db = firebase.firestore();
     var ref = db.collection("cart").doc(user);
@@ -107,4 +124,8 @@ export const removeOneFromCart = (id, user) => dispatch => {
         console.error(error);
         dispatch({type: C.WRITE_CART_DATA_FAIL});
     });
+}
+
+export const submitOrder = (order) => dispatch => {
+
 }

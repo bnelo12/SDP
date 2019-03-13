@@ -1,0 +1,58 @@
+[debug] [2019-03-12T13:10:50.249Z] ----------------------------------------------------------------------
+[debug] [2019-03-12T13:10:50.252Z] Command:       /usr/local/bin/node /usr/local/bin/firebase functions:shell
+[debug] [2019-03-12T13:10:50.252Z] CLI Version:   6.3.1
+[debug] [2019-03-12T13:10:50.252Z] Platform:      darwin
+[debug] [2019-03-12T13:10:50.252Z] Node Version:  v11.8.0
+[debug] [2019-03-12T13:10:50.253Z] Time:          Tue Mar 12 2019 13:10:50 GMT+0000 (Greenwich Mean Time)
+[debug] [2019-03-12T13:10:50.253Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-12T13:10:50.266Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-12T13:10:50.267Z] > authorizing via signed-in user
+[debug] [2019-03-12T13:10:50.267Z] [iam] checking project sdpwebapp for permissions ["firebase.projects.get"]
+[debug] [2019-03-12T13:10:50.269Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/sdpwebapp:testIamPermissions  
+
+[debug] [2019-03-12T13:10:51.016Z] <<< HTTP RESPONSE 200
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-03-12T13:10:52.334Z] Fetching environment
+[debug] [2019-03-12T13:10:52.337Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/sdpwebapp  
+ 
+[debug] [2019-03-12T13:10:53.103Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-12T13:10:53.104Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/12887961830:getServerAppConfig  
+ 
+[debug] [2019-03-12T13:10:53.308Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-12T13:10:53.309Z] Starting @google-cloud/functions-emulator
+[debug] [2019-03-12T13:10:54.884Z] Parsing function triggers
+[info] ✔  functions: helloWorld
+[debug] [2019-03-12T15:02:17.884Z] ----------------------------------------------------------------------
+[debug] [2019-03-12T15:02:17.886Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2019-03-12T15:02:17.887Z] CLI Version:   6.3.1
+[debug] [2019-03-12T15:02:17.887Z] Platform:      darwin
+[debug] [2019-03-12T15:02:17.887Z] Node Version:  v11.8.0
+[debug] [2019-03-12T15:02:17.888Z] Time:          Tue Mar 12 2019 15:02:17 GMT+0000 (Greenwich Mean Time)
+[debug] [2019-03-12T15:02:17.888Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-03-12T15:02:17.900Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-03-12T15:02:17.900Z] > authorizing via signed-in user
+[debug] [2019-03-12T15:02:17.901Z] [iam] checking project sdpwebapp for permissions ["firebase.projects.get"]
+[debug] [2019-03-12T15:02:17.902Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/sdpwebapp:testIamPermissions  
+
+[debug] [2019-03-12T15:02:18.727Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-12T15:02:18.729Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/sdpwebapp  
+ 
+[debug] [2019-03-12T15:02:19.454Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Ben/Projects/SDP/webapp'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2019-03-12T15:02:19.951Z] Fetching environment
+[debug] [2019-03-12T15:02:19.953Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/12887961830:getServerAppConfig  
+ 
+[debug] [2019-03-12T15:02:19.954Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/12887961830/clients/_:getWebAppConfig  
+ 
+[debug] [2019-03-12T15:02:20.171Z] <<< HTTP RESPONSE 200
+[debug] [2019-03-12T15:02:20.171Z] Starting @google-cloud/functions-emulator
+[debug] [2019-03-12T15:02:20.240Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: build
+[info] ✔  hosting: Local server: http://localhost:5005
+[debug] [2019-03-12T15:02:21.743Z] Parsing function triggers
