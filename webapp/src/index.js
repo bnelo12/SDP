@@ -19,7 +19,11 @@ var config = {
 };
 firebase.initializeApp(config);
 
-registerIonic();
+
+
+registerIonic({
+    mode: "md"
+});
 
 ReactDOM.render(
     <Provider store={store}>
