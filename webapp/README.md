@@ -118,6 +118,8 @@ Great! Now you are done.
 
 Simply type `firebase deploy` to deploy your app to Firebase. 
 
+# Development
+
 ## Available Scripts
 
 In the project directory, you can run:
