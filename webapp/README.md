@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Retriva Web App
 
+This guide will walk you though setting up the web app on your own Firebase account.
+
 ## Dependencies
 - [git](https://help.github.com/en/articles/set-up-git)
 - [npm/node](https://nodejs.org/en/)
