@@ -5,6 +5,7 @@ import Loading from './Loading';
 import Check from './Check';
 
 import "./Queue.scss";
+import { unsubscribeToBrowseItemsData } from '../store/browseItems/actions';
 
 export default ({queue, items, cartItems, submitOrder, email, onCancelOrder, closeQueue}) => {
 
@@ -17,12 +18,14 @@ export default ({queue, items, cartItems, submitOrder, email, onCancelOrder, clo
     const makeOrder = () => {
         console.log(cartItems, items)
         var order = [];
+        var userOrder = [];
         for (let item of Object.keys(cartItems)) {
             for (let i = 0; i < cartItems[item].count; i++) {
                 order.push(items[item][i]);
+                userOrder.push({item, position: items[item][i]})
             }
         }
-        return {items: order, user: email};
+        return {items: order, user: email, updateItems: items, userOrder};
     }
 
     const inQueueRender = () => (
