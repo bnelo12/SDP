@@ -5,9 +5,8 @@ import Loading from './Loading';
 import Check from './Check';
 
 import "./Queue.scss";
-import { unsubscribeToBrowseItemsData } from '../store/browseItems/actions';
 
-export default ({queue, items, cartItems, submitOrder, email, onCancelOrder, closeQueue}) => {
+export default ({queue, items, cartItems, submitOrder, email, onCancelOrder, closeQueue, isReturn, beginReturn}) => {
 
     const getClass = () => {
         if (queue.shouldShowQueue) return "opening";
@@ -15,35 +14,36 @@ export default ({queue, items, cartItems, submitOrder, email, onCancelOrder, clo
         else return "";
     }
 
-    const makeOrder = () => {
-        console.log(cartItems, items)
-        var order = [];
-        var userOrder = [];
-        for (let item of Object.keys(cartItems)) {
-            for (let i = 0; i < cartItems[item].count; i++) {
-                order.push(items[item][i]);
-                userOrder.push({item, position: items[item][i]})
-            }
-        }
-        return {items: order, user: email, updateItems: items, userOrder};
+    const makeAndSubmitOrder = () => {
+        submitOrder({items, cartItems, email});
     }
 
     const inQueueRender = () => (
         <>
-            <Loading/>
+            <Loading isReturn={isReturn}/>
             <IonButton 
-                onClick={(ev) => {ev.stopPropagation(); onCancelOrder();}} id="cancel-order-button" fill="clear">
-                cancel order
+                onClick={(ev) => {
+                    ev.stopPropagation();
+                    onCancelOrder();
+                }} id="cancel-order-button" fill="clear">
+                {isReturn ? "cancel return" : "cancel order"}
             </IonButton>
         </>
     )
 
     const readyRender = () => (
         <>
-            <Check play={queue.queue.users && queue.queue.users[0] === email}/>
+            <Check play={queue.queue.users && queue.queue.users[0] === email} isReturn={isReturn}/>
             <IonButton 
-                onClick={(ev) => {ev.stopPropagation(); submitOrder(makeOrder()); onCancelOrder();}} id="collect-order-button" fill="outline" color="secondary">
-                collect now
+                onClick={(ev) => {
+                    ev.stopPropagation();
+                    if (isReturn) beginReturn();
+                    else {
+                        makeAndSubmitOrder(); 
+                        onCancelOrder();
+                    }
+                }} id="collect-order-button" fill="outline" color="secondary">
+                {isReturn ? "return my items now" : "collect now"}
             </IonButton>
         </>
     )

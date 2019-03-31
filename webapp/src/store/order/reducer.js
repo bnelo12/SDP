@@ -1,11 +1,29 @@
 import { C } from './actions'
 
 const defaultState = {
-    items: []
+    items: [],
+    dataReference: null,
+    orders: []
 }
 
 export default (state=defaultState, action) => {
     switch(action.type) {
+        case C.SUBSCRIBE_TO_ORDERS_DATA:
+            return {
+                ...state,
+                dataReference: action.reference
+            }
+        case C.UNSUBSCRIBE_FROM_ORDERS_DATA:
+            return {
+                ...state,
+                dataReference: null
+            }
+        case C.RECEIVED_ORDERS_DATA:
+            return {
+                ...state,
+                haveReceived: true,
+                orders: action.orders
+            }
         case C.SUBMIT_ORDER:
             return {
                 ...state,

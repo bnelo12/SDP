@@ -6,7 +6,8 @@ const defaultState = {
     queue: {},
     dataReference: null,
     haveReceived: false,
-    isWritingData: false
+    isWritingData: false,
+    isReturn: false
 }
 
 export default (state=defaultState, action) => {
@@ -15,6 +16,7 @@ export default (state=defaultState, action) => {
             return {
                 ...state,
                 wasOpen: true,
+                isReturn: action.isReturn,
                 shouldShowQueue: true
             }
         case C.HIDE_QUEUE:

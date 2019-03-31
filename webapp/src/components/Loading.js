@@ -2,7 +2,7 @@ import React from 'react'
 import Lottie from 'react-lottie';
 import animationData from '../animations/loading.json'
 
-export default () => {
+export default ({isReturn}) => {
     return (() => {
         const options = {
             loop: true,
@@ -27,7 +27,7 @@ export default () => {
                     isClickToPauseDisabled={true}
                 />
                 <h1>You are in the queue</h1>
-                <h5>Your items will be ready to collect shortly</h5>
+                <h5>{isReturn ? "You will be able to return your items shortly" : "Your items will be ready to collect shortly"}</h5>
             </div>
         )
     })();

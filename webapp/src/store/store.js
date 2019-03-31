@@ -7,11 +7,12 @@ import browseItems from './browseItems/reducer';
 import cart from './cart/reducer';
 import queue from './queue/reducer';
 import items from './items/reducer';
+import order from './order/reducer';
 
 const middlewares = [thunkMiddleware, logger];
 
 const rootReducer = combineReducers(
-    {user, browseItems, cart, queue, items}
+    {user, browseItems, cart, queue, items, order}
 )
 
 const store = createStore(

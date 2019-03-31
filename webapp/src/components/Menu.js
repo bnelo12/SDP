@@ -11,7 +11,8 @@ const routes = {
         { title: 'Return Items', path: '/home/return', icon: 'return-left' }
     ],
     acctPages: [
-        { title: 'Logout', path: '/home/logout', icon: 'log-out' }
+        { title: 'Logout', path: '/home/logout', icon: 'log-out' },
+        { title: 'Report Missing Items', path: '/home/logout', icon: 'information-circle-outline' }
     ]
 };
 

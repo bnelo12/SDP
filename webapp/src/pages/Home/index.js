@@ -6,6 +6,8 @@ import { subscribeToBrowseItemsData, unsubscribeToBrowseItemsData, handleBrowseI
 import { subscribeToCartData, unsubscribeToCartData } from '../../store/cart/actions';
 import { cancelOrder, subscribeToQueueData, unsubscribeFromQueueData } from '../../store/queue/actions';
 import { subscribeToItemsData, unsubscribeFromItemsData } from '../../store/items/actions';
+import { subscribeToOrdersData, unsubscribeFromOrdersData } from '../../store/order/actions';
+
 import { submitOrder } from '../../store/order/actions';
 
 import Home from './Home';
@@ -15,7 +17,8 @@ const mapStateToProps = state => {
         user: state.user,
         queue: state.queue,
         items: state.items,
-        cart: state.cart
+        cart: state.cart,
+        order: state.order
     };
 }
 
@@ -42,6 +45,8 @@ const mapDispatchToProps = dispatch => {
             unsubscribeFromItemsData: (reference) => dispatch(unsubscribeFromItemsData(reference))
         },
         orderDispatch: {
+            subscribeToOrdersData: (email) => dispatch(subscribeToOrdersData(email)),
+            unsubscribeFromOrdersData: (reference) => dispatch(unsubscribeFromOrdersData(reference)), 
             submitOrder: (order) => dispatch(submitOrder(order))
         }
     }

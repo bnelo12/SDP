@@ -12,8 +12,8 @@ export const C = {
     WRITE_QUEUE_DATA_FAIL: "WRITE_QUEUE_DATA_FAIL",
 }
 
-export const showQueue = () => dispatch => {
-    dispatch({type: C.SHOW_QUEUE})
+export const showQueue = (isReturn) => dispatch => {
+    dispatch({type: C.SHOW_QUEUE, isReturn})
 }
 
 export const hideQueue = () => dispatch => {
@@ -40,11 +40,11 @@ export const unsubscribeFromQueueData = (reference) => dispatch => {
     dispatch({type: C.UNSUBSCRIBE_FROM_QUEUE_DATA})
 }
 
-export const addUserToQueue = (user) => dispatch => {
+export const addUserToQueue = (user, isReturn) => dispatch => {
     var db = firebase.firestore();
     var ref = db.collection("queue").doc("queue");
     dispatch({type: C.WRITE_QUEUE_DATA});
-    dispatch(showQueue());
+    dispatch(showQueue(isReturn));
     db.runTransaction((transaction) => {
         return transaction.get(ref).then((doc) => {
             var data = doc.data();

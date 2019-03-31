@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => {
     return {
         removeItemFromCart: (id, count, user) => dispatch(removeItemFromCart(id, count, user)),
         removeOneFromCart: (id, user) => dispatch(removeOneFromCart(id, user)),
-        addUserToQueue: (user) => dispatch(addUserToQueue(user))
+        addUserToQueue: (user) => dispatch(addUserToQueue(user, false))
     }
 }
 

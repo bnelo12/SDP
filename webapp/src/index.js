@@ -19,8 +19,6 @@ var config = {
 };
 firebase.initializeApp(config);
 
-
-
 registerIonic({
     mode: "md"
 });

@@ -2,7 +2,7 @@ import React from 'react'
 import Lottie from 'react-lottie';
 import animationData from '../animations/check.json'
 
-export default (play) => {
+export default ({play, isReturn}) => {
     const options = {
         loop: false,
         autoplay: true,
@@ -25,8 +25,8 @@ export default (play) => {
                 isPaused={false}
                 isClickToPauseDisabled={true}
             />
-            <h1>Your items are now ready to collect</h1>
-            <h5>Precede to the robot collection point and then press collect</h5>
+            <h1>{isReturn ? "The robot is now ready for your items to be returned" : "Your items are now ready to collect"}</h1>
+            <h5>{isReturn ? "Please head over to the robot with your items and press the button when ready" : "Precede to the robot collection point and then press collect"}</h5>
         </div>
     )
 }
