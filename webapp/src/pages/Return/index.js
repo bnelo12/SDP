@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { withToastManager  } from 'react-toast-notifications';
 
 import { addUserToQueue } from '../../store/queue/actions';
+import { setReturnNumber } from '../../store/return/actions';
 
 import Return from './Return';
 
@@ -16,7 +17,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addUserToQueue: (user) => dispatch(addUserToQueue(user, true))        
+        addUserToQueue: (user) => dispatch(addUserToQueue(user, true)),
+        setReturnNumber: (returnNumber) => dispatch(setReturnNumber(returnNumber))
     }
 }
 

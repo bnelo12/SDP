@@ -2,12 +2,14 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 
 import { emptyCart } from '../cart/actions';
+import { incrementStep } from '../return/actions';
 
 export const C = {
     SUBMIT_ORDER: "SUBMIT_ORDER",
     SUBSCRIBE_TO_ORDERS_DATA: "SUBSCRIBE_TO_ORDERS_DATA",
     UNSUBSCRIBE_FROM_ORDERS_DATA: "UNSUBSCRIBE_FROM_ORDERS_DATA",
     RECEIVED_ORDERS_DATA: "RECEIVED_ORDERS_DATA",
+    RECEIVED_ROBOT_STATUS: "RECEIVED_ROBOT_STATUS"
 }
 
 export const submitOrder = (request) => dispatch => {
@@ -47,6 +49,15 @@ export const subscribeToOrdersData = (email) => dispatch => {
                 dispatch({type: C.RECEIVED_ORDERS_DATA, orders: doc.data().orders});
             }
         });
+    var reference = db.collection("orders").doc("robotStatus")
+        .onSnapshot((doc) => {
+            if (doc.exists) {
+                dispatch({type: C.RECEIVED_ROBOT_STATUS, status: doc.data().ready});
+                if (doc.data().ready) {
+                    dispatch(incrementStep());
+                }
+            }
+        });
     dispatch({type: C.SUBSCRIBE_TO_ORDERS_DATA, reference})
 }
 
@@ -56,8 +67,3 @@ export const unsubscribeFromOrdersData = (reference) => dispatch => {
     }
     dispatch({type: C.UNSUBSCRIBE_FROM_ORDERS_DATA})
 }
-
-
-export const submitReturn = (order) => dispatch => {
-
-} 

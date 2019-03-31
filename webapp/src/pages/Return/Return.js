@@ -5,7 +5,7 @@ import ReturnOrder from '../../components/ReturnOrder';
 
 class Return extends Component {
     render() {
-        const {orders, browseItems, email, addUserToQueue} = this.props;        
+        const {orders, browseItems, email, addUserToQueue, setReturnNumber} = this.props;        
         return (
             <>
                 <IonHeader>
@@ -18,8 +18,11 @@ class Return extends Component {
                 </IonHeader>
                 <IonContent>
                     <IonList>
-                        {orders.map((order, idx) => (<ReturnOrder key={order.date} browseItems={browseItems} order={order} onReturn={
-                            () => { addUserToQueue(email); }
+                        {orders.map((order, idx) => (<ReturnOrder key={idx} browseItems={browseItems} order={order} onReturn={
+                            () => { 
+                                addUserToQueue(email);
+                                setReturnNumber(idx);
+                            }
                         }/>))}
                     </IonList>
                 </IonContent>

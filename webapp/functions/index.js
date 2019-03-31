@@ -20,13 +20,27 @@ exports.getOrder = functions.https.onRequest((request, response) => {
 exports.finishOrder = functions.https.onRequest((request, response) => {
     var db = admin.firestore();
     var orderRef = db.collection("orders").doc("order");
-    orderRef.set({items: []});
-    var queueRef = db.collection("queue").doc("queue");
-    queueRef.get().then(doc => {
-        var queue = doc.data();
-        queue.users.shift();
-        queueRef.set(queue);
-    })
-    response.send("success");
+    orderRef.set({items: []})
+        .then(() => {
+            var queueRef = db.collection("queue").doc("queue");
+            queueRef.get().then(doc => {
+                var queue = doc.data();
+                queue.users.shift();
+                queueRef.set(queue);
+            }).then(() => {
+                response.send("success");
+            })
+        })
+});
+
+exports.finishReturn = functions.https.onRequest((request, response) => {
+    var db = admin.firestore();
+    var returnRef = db.collection("orders").doc("return");
+    returnRef.set({isWaitingForUser: true})
+        .then(() => {
+            var statusRef = db.collection("orders").doc("robotStatus");
+            statusRef.set({ready: true}).then(() => response.send("success"));
+            
+        });
 });
    

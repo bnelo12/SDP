@@ -10,6 +10,7 @@ import Return from '../Return';
 import Logout from '../Logout';
 
 import Queue from '../../components/Queue';
+import ReturnSteps from '../../components/ReturnSteps';
 
 
 class Home extends Component {
@@ -53,7 +54,18 @@ class Home extends Component {
                     onCancelOrder={ queueDispatch.cancelOrder }
                     submitOrder= { orderDispatch.submitOrder }
                     isReturn={ this.props.queue.isReturn }
+                    beginReturn={ this.props.returnItemsDispatch.beginReturn }
                 />
+                {this.props.returnItems.returnActive ? (
+                <ReturnSteps
+                    browseItems={this.props.browseItems}
+                    orders={this.props.order}
+                    returnItems={this.props.returnItems}
+                    incrementStep={this.props.returnItemsDispatch.incrementStep}
+                    submitReturn={this.props.returnItemsDispatch.submitReturn}
+                    email={this.props.user.userRecord.email}
+                    finishReturn={this.props.returnItemsDispatch.finishReturn}
+                />) : (null)}
             </IonApp>
         );
     }

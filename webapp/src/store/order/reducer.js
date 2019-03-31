@@ -3,7 +3,8 @@ import { C } from './actions'
 const defaultState = {
     items: [],
     dataReference: null,
-    orders: []
+    orders: [],
+    robotStatus: true
 }
 
 export default (state=defaultState, action) => {
@@ -17,6 +18,11 @@ export default (state=defaultState, action) => {
             return {
                 ...state,
                 dataReference: null
+            }
+        case C.RECEIVED_ROBOT_STATUS:
+            return {
+                ...state,
+                robotStatus: action.status
             }
         case C.RECEIVED_ORDERS_DATA:
             return {
