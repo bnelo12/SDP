@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {IonHeader, IonToolbar, IonMenuButton, IonButton, IonButtons, IonTitle, IonItem, IonInput, IonContent } from '@ionic/react'
+import {IonHeader, IonToolbar, IonMenuButton, IonButtons, IonButton, IonFooter, IonTitle, IonItem, IonInput, IonContent, IonTextarea } from '@ionic/react'
 
-//import './Report.scss'
+import './Report.scss'
 
 class Report extends Component {
     render() {
@@ -19,7 +19,7 @@ class Report extends Component {
                     <form id="report-form-content">
                         <div className="text-box top">
                             <IonItem>
-                                <IonInput placeholder="Description" name="description" type="text" required/>
+                                <IonTextarea placeholder="Description" name="description" rows="5" required/>
                             </IonItem>
                         </div>
                         <div className="text-box bottom">
@@ -33,11 +33,15 @@ class Report extends Component {
                                 />
                             </IonItem>
                         </div>
-                        <IonButton class="custom" type='submit' color="success">
-                            Submit Issue
-                        </IonButton>
                     </form>
                 </IonContent>
+                <IonFooter>
+                    <IonToolbar>
+                        <IonItem slot="end">
+                            <IonButton class='custom' type='submit' color='secondary'>Submit Issue</IonButton>
+                        </IonItem>
+                    </IonToolbar>
+                </IonFooter>
             </>
         )
     }

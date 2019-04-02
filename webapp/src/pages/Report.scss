@@ -13,15 +13,6 @@
     border-radius: 100px;
 }
 
-#report-form-content ion-card {
-    height: 400px;
-}
-
-.provider {
-    display: inline-flex;
-    height: 50px;
-}
-
 #report-form-content ion-button:hover {
     opacity: .90;
 }
@@ -45,26 +36,7 @@
     margin-bottom: 20px;
 }
 
-#report-form-content ion-card-title {
-    color: white;
-}
-
-#return {
-    color: white;
-}
-
 #report-form-content p {
     color:  var(--ion-color-light);
     margin: 10px;
-}
-
-#report-form-content a {
-    margin: 0 10px;
-}
-
-#report-form-content .create-account-link {
-    a {
-        color: var(--ion-color-light);
-    }
-    margin: 20px;
 }
