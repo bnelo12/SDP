@@ -49,7 +49,7 @@ export const subscribeToOrdersData = (email) => dispatch => {
                 dispatch({type: C.RECEIVED_ORDERS_DATA, orders: doc.data().orders});
             }
         });
-    var reference = db.collection("orders").doc("robotStatus")
+    reference = db.collection("orders").doc("robotStatus")
         .onSnapshot((doc) => {
             if (doc.exists) {
                 dispatch({type: C.RECEIVED_ROBOT_STATUS, status: doc.data().ready});

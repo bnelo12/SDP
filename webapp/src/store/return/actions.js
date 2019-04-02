@@ -35,16 +35,22 @@ export const submitReturn = (isFinal, isWaitingForUser, position) => dispatch =>
     dispatch({type: C.SUBMIT_RETURN});
 }
 
-export const finishReturn = (returnNumber, returnItems, email, orders) => dispatch => {
+export const finishReturn = (returnNumber, returnItems, email, orders, items) => dispatch => {
     var db = firebase.firestore();
     db.collection("orders").doc("robotStatus").set({ready: true});
     db.collection("orders").doc("return").set({isWaitingForUser: true});
     db.collection("orders").doc("order").set({type: "none"});
     var newOrders = orders.slice(0, returnNumber).concat(orders.slice(returnNumber + 1));
+    var newItems = JSON.parse(JSON.stringify(items));
     db.collection("orders").doc(email).set({orders: newOrders});
     for (var i = 0; i < returnItems.length; i++) {
-        dispatch(addCountToBrowseItem(returnItems[i], 1))
+        dispatch(addCountToBrowseItem(returnItems[i], 1));
     }
+    var currentOrder = orders[Number(returnNumber)];
+    for (var position of Object.keys(currentOrder.items)) {
+        newItems[currentOrder.items[position]].push(Number(position));
+    }
+    db.collection("items").doc("items").set(newItems);
     dispatch(hideQueue());
     dispatch({type: C.FINISH_RETURN});
 }

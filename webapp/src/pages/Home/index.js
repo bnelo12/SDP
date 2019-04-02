@@ -9,6 +9,8 @@ import { subscribeToItemsData, unsubscribeFromItemsData } from '../../store/item
 import { subscribeToOrdersData, unsubscribeFromOrdersData } from '../../store/order/actions';
 import { beginReturn, incrementStep, submitReturn, finishReturn } from '../../store/return/actions';
 
+import { withToastManager  } from 'react-toast-notifications';
+
 import { submitOrder } from '../../store/order/actions';
 
 import Home from './Home';
@@ -56,9 +58,9 @@ const mapDispatchToProps = dispatch => {
             beginReturn: () => dispatch(beginReturn()),
             incrementStep: () => dispatch(incrementStep()),
             submitReturn: (isFinal, isWaitingForUser, position) => dispatch(submitReturn(isFinal, isWaitingForUser, position)),
-            finishReturn: (returnNumber, returnItems, email, orders) => dispatch(finishReturn(returnNumber, returnItems, email, orders))
+            finishReturn: (returnNumber, returnItems, email, orders, items) => dispatch(finishReturn(returnNumber, returnItems, email, orders, items))
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(authenticatedPage(Home));
+export default connect(mapStateToProps, mapDispatchToProps)(authenticatedPage(withToastManager(Home)));

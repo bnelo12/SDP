@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonItem, IonLabel, IonButton, IonIcon, IonListHeader, IonAvatar } from '@ionic/react';
+import { IonItem, IonLabel, IonButton, IonListHeader, IonAvatar } from '@ionic/react';
 
 import './ReturnOrder.scss';
 
@@ -19,7 +19,7 @@ export default ({order, browseItems, onReturn}) => {
                     Object.keys(groupedOrder).map((item, idx) => (
                         <IonItem key={idx}>
                             <IonAvatar slot="start">
-                                <img src={browseItems[item].imageURL}/>
+                                <img alt={browseItems[item].name} src={browseItems[item].imageURL}/>
                             </IonAvatar>
                             <IonLabel>
                                 <h2>{ browseItems[item].name }</h2>

@@ -5,7 +5,7 @@ import Gears from './Gears';
 
 import './ReturnSteps.scss'
 
-export default ({ browseItems, orders, returnItems, incrementStep, submitReturn, finishReturn, email }) => {
+export default ({ browseItems, orders, returnItems, items, submitReturn, finishReturn, email, toastManager }) => {
     const returnOrder = orders.orders[returnItems.returnNumber];
     const returnStep = returnItems.returnStep;
     const itemsToReturn = Object.values(returnOrder.items); 
@@ -41,7 +41,8 @@ export default ({ browseItems, orders, returnItems, incrementStep, submitReturn,
             </div>
         );
     } else {
-        finishReturn(returnItems.returnNumber, itemsToReturn, email, orders.orders);
+        finishReturn(returnItems.returnNumber, itemsToReturn, email, orders.orders, items);
+        toastManager.add("Your items have been succesfully returned. Thank you for using the Retriva rental solution!", {appearance: "success", autoDismiss: false})
         return null;
     }
 }

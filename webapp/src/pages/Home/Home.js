@@ -64,7 +64,9 @@ class Home extends Component {
                     incrementStep={this.props.returnItemsDispatch.incrementStep}
                     submitReturn={this.props.returnItemsDispatch.submitReturn}
                     email={this.props.user.userRecord.email}
+                    items={this.props.items.items}
                     finishReturn={this.props.returnItemsDispatch.finishReturn}
+                    toastManager={this.props.toastManager}
                 />) : (null)}
             </IonApp>
         );
