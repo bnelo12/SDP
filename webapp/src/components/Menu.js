@@ -12,7 +12,7 @@ const routes = {
     ],
     acctPages: [
         { title: 'Logout', path: '/home/logout', icon: 'log-out' },
-        { title: 'Report Missing Items', path: '/home/logout', icon: 'information-circle-outline' }
+        { title: 'Report Missing Items', path: '/home/report', icon: 'information-circle-outline' }
     ]
 };
 

@@ -1,0 +1,42 @@
+#report-form-content {
+    width: 100%;
+    display: block;
+}
+
+#report-form-content ion-button .custom {
+    text-transform: none;
+    --border-radius: 100px;
+    height: 50px;
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 80px;
+    border-radius: 100px;
+}
+
+#report-form-content ion-button:hover {
+    opacity: .90;
+}
+
+#report-form-content .text-box {
+    --ion-item-background: transparent;
+    background-color: var(--ion-color-light);
+    padding: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#report-form-content .text-box.top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#report-form-content .text-box.bottom {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#report-form-content p {
+    color:  var(--ion-color-light);
+    margin: 10px;
+}

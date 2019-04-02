@@ -8,6 +8,7 @@ import Cart from '../Cart';
 import Browse from '../Browse';
 import Return from '../Return';
 import Logout from '../Logout';
+import Report from '../Report';
 
 import Queue from '../../components/Queue';
 import ReturnSteps from '../../components/ReturnSteps';
@@ -44,6 +45,7 @@ class Home extends Component {
                             <Route path="/home/return" component={ Return } exact={true}/>
                             <Route path="/home/cart" component={ Cart } exact={true}/>
                             <Route path="/home/logout" component={ Logout } exact={true}/>
+                            <Route path="/home/report" component={ Report } exact={true}/>
                         </IonRouterOutlet>
                     </div>
                 </IonSplitPane>
