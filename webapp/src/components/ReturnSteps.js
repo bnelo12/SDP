@@ -41,7 +41,7 @@ export default ({ browseItems, orders, returnItems, incrementStep, submitReturn,
             </div>
         );
     } else {
-        finishReturn(returnItems.returnNumber, itemsToReturn, email, orders);
+        finishReturn(returnItems.returnNumber, itemsToReturn, email, orders.orders);
         return null;
     }
 }

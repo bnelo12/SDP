@@ -4,7 +4,7 @@ const defaultState = {
     items: [],
     dataReference: null,
     orders: [],
-    robotStatus: true
+    robotStatus: false
 }
 
 export default (state=defaultState, action) => {
