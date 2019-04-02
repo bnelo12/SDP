@@ -32,7 +32,7 @@ export default ({ browseItems, orders, returnItems, items, submitReturn, finishR
                                 <IonButton 
                                     onClick={(ev) => {
                                         ev.stopPropagation();
-                                        submitReturn(returnStep + 1 === itemsToReturn, false, Number(Object.keys(returnOrder.items)[returnStep]));
+                                        submitReturn(returnStep + 1 === itemsToReturn.length, false, Number(Object.keys(returnOrder.items)[returnStep]));
                                     }} id="continue-button" fill="outline" color="secondary">
                                     continue
                                 </IonButton>

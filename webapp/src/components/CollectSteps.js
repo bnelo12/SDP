@@ -27,7 +27,7 @@ export default ({ orders, collect, submitCollect, finishCollect, toastManager })
                                 <IonButton 
                                     onClick={(ev) => {
                                         ev.stopPropagation();
-                                        submitCollect(collectStep + 1 === itemsToCollect, false, Number(Object.keys(collectOrder.items)[collectStep]));
+                                        submitCollect(collectStep + 1 === itemsToCollect.length, false, Number(Object.keys(collectOrder.items)[collectStep]));
                                     }} id="continue-button" fill="outline" color="secondary">
                                     continue
                                 </IonButton>

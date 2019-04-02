@@ -17,6 +17,26 @@ exports.getOrder = functions.https.onRequest((request, response) => {
     });
 });
 
+exports.getCollect = functions.https.onRequest((request, response) => {
+    var db = admin.firestore();
+    var docRef = db.collection("orders").doc("collect");
+    docRef.get().then(function(doc) {
+        response.send(doc.data());
+    }).catch(function(error) {
+        response.send(error);
+    });
+});
+
+exports.getReturn = functions.https.onRequest((request, response) => {
+    var db = admin.firestore();
+    var docRef = db.collection("orders").doc("return");
+    docRef.get().then(function(doc) {
+        response.send(doc.data());
+    }).catch(function(error) {
+        response.send(error);
+    });
+});
+
 exports.finishOrder = functions.https.onRequest((request, response) => {
     var db = admin.firestore();
     var orderRef = db.collection("orders").doc("order");
