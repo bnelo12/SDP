@@ -6,7 +6,7 @@ import Check from './Check';
 
 import "./Queue.scss";
 
-export default ({queue, items, cartItems, submitOrder, email, onCancelOrder, closeQueue, isReturn, beginReturn}) => {
+export default ({queue, items, cartItems, submitOrder, email, onCancelOrder, beginCollect, isReturn, beginReturn}) => {
 
     const getClass = () => {
         if (queue.shouldShowQueue) return "opening";
@@ -39,8 +39,7 @@ export default ({queue, items, cartItems, submitOrder, email, onCancelOrder, clo
                     ev.stopPropagation();
                     if (isReturn) beginReturn();
                     else {
-                        makeAndSubmitOrder(); 
-                        onCancelOrder();
+                        makeAndSubmitOrder();
                     }
                 }} id="collect-order-button" fill="outline" color="secondary">
                 {isReturn ? "return my items now" : "collect now"}

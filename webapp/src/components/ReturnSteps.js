@@ -19,6 +19,7 @@ export default ({ browseItems, orders, returnItems, items, submitReturn, finishR
                             <>
                                 <h3>Please Wait</h3>
                                 <Gears/>
+                                <h1>The Robot is Returning Your Item</h1>
                             </>
                             ) : (
                             <>

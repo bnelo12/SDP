@@ -8,6 +8,7 @@ import { cancelOrder, subscribeToQueueData, unsubscribeFromQueueData } from '../
 import { subscribeToItemsData, unsubscribeFromItemsData } from '../../store/items/actions';
 import { subscribeToOrdersData, unsubscribeFromOrdersData } from '../../store/order/actions';
 import { beginReturn, incrementStep, submitReturn, finishReturn } from '../../store/return/actions';
+import { beginCollect, incrementCollectStep, submitCollect, finishCollect } from '../../store/collect/actions';
 
 import { withToastManager  } from 'react-toast-notifications';
 
@@ -23,7 +24,8 @@ const mapStateToProps = state => {
         cart: state.cart,
         order: state.order,
         returnItems: state.returnItems,
-        browseItems: state.browseItems
+        browseItems: state.browseItems,
+        collect: state.collect
     };
 }
 
@@ -59,6 +61,12 @@ const mapDispatchToProps = dispatch => {
             incrementStep: () => dispatch(incrementStep()),
             submitReturn: (isFinal, isWaitingForUser, position) => dispatch(submitReturn(isFinal, isWaitingForUser, position)),
             finishReturn: (returnNumber, returnItems, email, orders, items) => dispatch(finishReturn(returnNumber, returnItems, email, orders, items))
+        },
+        collectItemsDispatch: {
+            beginCollect: () => dispatch(beginCollect()),
+            incrementStep: () => dispatch(incrementCollectStep()),
+            submitCollect: (isFinal, isWaitingForUser, position) => dispatch(submitCollect(isFinal, isWaitingForUser, position)),
+            finishCollect: () => dispatch(finishCollect())
         }
     }
 }

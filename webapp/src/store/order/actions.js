@@ -3,6 +3,7 @@ import "firebase/firestore";
 
 import { emptyCart } from '../cart/actions';
 import { incrementStep } from '../return/actions';
+import { submitCollect, incrementCollectStep, beginCollect } from '../collect/actions';
 
 export const C = {
     SUBMIT_ORDER: "SUBMIT_ORDER",
@@ -25,6 +26,7 @@ export const submitOrder = (request) => dispatch => {
             updatedItems[item].shift(); 
         }
     }
+    dispatch(submitCollect(Object.keys(userOrder.items).length === 1, false, Object.keys(userOrder.items)[0]));
     userOrder.date = (new Date()).toUTCString();
     var db = firebase.firestore();
     dispatch({type: C.SUBMIT_ORDER, items: order})
@@ -33,12 +35,16 @@ export const submitOrder = (request) => dispatch => {
     db.collection("orders").doc(email).get()
         .then((doc) => {
             if (!doc.exists) {
-                db.collection("orders").doc(email).set({orders:[userOrder]})
+                db.collection("orders").doc(email).set({orders:[userOrder]}).then(
+                    () => dispatch(beginCollect())
+                )
             } else {
-                db.collection("orders").doc(email).set({orders: doc.data()["orders"].concat(userOrder)})
+                db.collection("orders").doc(email).set({orders: doc.data()["orders"].concat(userOrder)}).then(
+                    () => dispatch(beginCollect())
+                )
             }
         });
-    db.collection("orders").doc("order").set({items: order});
+    db.collection("orders").doc("order").set({type: "collect"});
 }
 
 export const subscribeToOrdersData = (email) => dispatch => {
@@ -55,6 +61,7 @@ export const subscribeToOrdersData = (email) => dispatch => {
                 dispatch({type: C.RECEIVED_ROBOT_STATUS, status: doc.data().ready});
                 if (doc.data().ready) {
                     dispatch(incrementStep());
+                    dispatch(incrementCollectStep());
                 }
             }
         });

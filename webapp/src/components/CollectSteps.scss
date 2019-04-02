@@ -1,0 +1,38 @@
+#collect-steps {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    position: absolute;
+    background-color: var(--ion-color-primary);
+    z-index: 11;
+}
+
+#collect-instructions {
+    width: 100vw;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#collect-steps ion-card {
+    background-color: var(--ion-color-light);
+    max-width: 300px;
+    margin: auto;
+}
+
+#collect-steps ion-card > ion-card-subtitle {
+    margin: 10px;
+    text-align: start;
+}
+
+#collect-steps ion-card > img {
+    height: 200px;
+    object-fit: cover;
+}
+
+#continue-button {
+    width: 200px;
+    text-transform: none;
+    color: var(--ion-color-light);
+    --border-radius: 100px;
+}

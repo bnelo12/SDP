@@ -11,6 +11,7 @@ import Logout from '../Logout';
 
 import Queue from '../../components/Queue';
 import ReturnSteps from '../../components/ReturnSteps';
+import CollectSteps from '../../components/CollectSteps';
 
 
 class Home extends Component {
@@ -55,6 +56,10 @@ class Home extends Component {
                     submitOrder= { orderDispatch.submitOrder }
                     isReturn={ this.props.queue.isReturn }
                     beginReturn={ this.props.returnItemsDispatch.beginReturn }
+                    beginCollect={ this.props.collectItemsDispatch.beginCollect }
+                    submitCollect={this.props.collectItemsDispatch.submitCollect}
+                    orders={this.props.order}
+                    collect={this.props.collect}
                 />
                 {this.props.returnItems.returnActive ? (
                 <ReturnSteps
@@ -66,6 +71,16 @@ class Home extends Component {
                     email={this.props.user.userRecord.email}
                     items={this.props.items.items}
                     finishReturn={this.props.returnItemsDispatch.finishReturn}
+                    toastManager={this.props.toastManager}
+                />) : (null)}
+                {this.props.collect.collectActive ? (
+                <CollectSteps
+                    orders={this.props.order}
+                    collect={this.props.collect}
+                    incrementStep={this.props.collectItemsDispatch.incrementStep}
+                    submitCollect={this.props.collectItemsDispatch.submitCollect}
+                    email={this.props.user.userRecord.email}
+                    finishCollect={this.props.collectItemsDispatch.finishCollect}
                     toastManager={this.props.toastManager}
                 />) : (null)}
             </IonApp>

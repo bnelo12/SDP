@@ -26,7 +26,6 @@ export default () => {
                     isPaused={false}
                     isClickToPauseDisabled={true}
                 />
-                <h1>The Robot is Returning Your Item</h1>
             </div>
         )
     })();
