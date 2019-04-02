@@ -29,7 +29,8 @@ class Home extends Component {
         this.props.browseItemsDispatch.unsubscribeToBrowseItemsData();
         this.props.queueDispatch.unsubscribeFromQueueData(this.props.queue.dataReference);
         this.props.itemsDispatch.unsubscribeFromItemsData(this.props.items.dataReference);
-        this.props.orderDispatch.unsubscribeFromOrdersData(this.props.order.dataReference);        
+        this.props.orderDispatch.unsubscribeFromOrdersData(this.props.order.dataReference);   
+        this.props.cartDispatch.unsubscribeToCartData(this.props.cart.dataReference);     
     }
 
     render() {

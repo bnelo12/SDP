@@ -56,6 +56,16 @@ export default (state=defaultState, action) => {
                     ...state,
                     isWritingData: false
                 }
+            case C.RESET:
+                return {
+                    shouldShowQueue: false,
+                    wasOpen: false,
+                    queue: {},
+                    dataReference: null,
+                    haveReceived: false,
+                    isWritingData: false,
+                    isReturn: false
+                }
         default: return state;
     }
 }

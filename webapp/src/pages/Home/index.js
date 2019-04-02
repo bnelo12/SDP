@@ -40,7 +40,7 @@ const mapDispatchToProps = dispatch => {
         },
         cartDispatch: {
             subscribeToCartData: (user) => dispatch(subscribeToCartData(user)),
-            unsubscribeToCartData: (user) => dispatch(unsubscribeToCartData(user))
+            unsubscribeToCartData: (reference) => dispatch(unsubscribeToCartData(reference))
         },
         queueDispatch: {
             cancelOrder: (user) => dispatch(cancelOrder(user)),

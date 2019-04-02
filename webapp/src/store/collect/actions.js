@@ -8,7 +8,8 @@ export const C = {
     BEGIN_COLLECT: "BEGIN_COLLECT",
     INCREMENT_COLLECT_STEP: "INCREMENT_COLLECT_STEP",
     SUBMIT_COLLECT: "SUBMIT_COLLECT",
-    FINISH_COLLECT: "FINISH_COLLECT"
+    FINISH_COLLECT: "FINISH_COLLECT",
+    RESET: "RESET"
 }
 
 export const beginCollect = () => dispatch => {

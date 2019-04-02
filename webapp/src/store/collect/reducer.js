@@ -39,6 +39,13 @@ export default (state=defaultState, action) => {
                 collectStep: 0,
                 isWaitingForRobot: false
             }
+        case C.RESET:
+            return {
+                collectActive: false,
+                collectNumber: 0,
+                collectStep: 0,
+                isWaitingForRobot: false
+            }
         default: return state;
     }
 }

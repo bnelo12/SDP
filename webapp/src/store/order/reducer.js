@@ -17,7 +17,8 @@ export default (state=defaultState, action) => {
         case C.UNSUBSCRIBE_FROM_ORDERS_DATA:
             return {
                 ...state,
-                dataReference: null
+                dataReference: null,
+                orders: []
             }
         case C.RECEIVED_ROBOT_STATUS:
             return {
@@ -34,6 +35,13 @@ export default (state=defaultState, action) => {
             return {
                 ...state,
                 items: action.items
+            }
+        case C.RESET:
+            return {
+                items: [],
+                dataReference: null,
+                orders: [],
+                robotStatus: false
             }
         default: return state;
     }

@@ -46,6 +46,13 @@ export default (state=defaultState, action) => {
                 isWritingData: false
             }
         }
+        case C.RESET:
+            return {
+                haveReceived: false,
+                items: Object.create(null),
+                dataReference: null,
+                isWritingData: false
+            }
         default: 
             return state;
     }

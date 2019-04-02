@@ -13,7 +13,7 @@ export const C = {
     WRITE_CART_DATA_FAIL: "WRITE_CART_DATA_FAIL",
     REMOVE_ITEM_FROM_CART: "REMOVE_ITEM_FROM_CART",
     REMOVE_SINGLE_FROM_CART: "REMOVE_SINGLE_FROM_CART",
-    EMPTY_CART: "EMPTY_CART"
+    EMPTY_CART: "EMPTY_CART",
 }
 
 export const addItemToCart = (id, item, user) => dispatch => {
@@ -41,7 +41,7 @@ export const addItemToCart = (id, item, user) => dispatch => {
 export const subscribeToCartData = (user) => dispatch => {
     var db = firebase.firestore();   
     var reference = db.collection("cart").doc(user);
-    reference.onSnapshot((doc) => {
+    var func = reference.onSnapshot((doc) => {
         if (doc.exists) {
             const items = doc.data();
             dispatch({type: C.RECEIVED_CART_DATA, items});
@@ -57,7 +57,7 @@ export const subscribeToCartData = (user) => dispatch => {
             dispatch({type: C.WRITE_CART_DATA});
         }
     });
-    dispatch({type: C.SUBSCRIBE_TO_CART_DATA, reference})
+    dispatch({type: C.SUBSCRIBE_TO_CART_DATA, func})
 }
 
 export const unsubscribeToCartData = (reference) => dispatch => {

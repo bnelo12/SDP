@@ -8,6 +8,7 @@ export const C = {
     WRITE_ITEMS_DATA: "WRITE_ITEMS_DATA",
     WRITE_ITEMS_DATA_SUCCESS: "WRITE_ITEMS_DATA_SUCCESS",
     WRITE_ITEMS_DATA_FAIL: "WRITE_ITEMS_DATA_FAIL",
+    RESET: "RESET"
 }
 
 export const subscribeToItemsData = () => dispatch => {

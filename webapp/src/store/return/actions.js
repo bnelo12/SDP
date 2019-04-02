@@ -9,7 +9,8 @@ export const C = {
     BEGIN_RETURN: "BEGIN_RETURN",
     INCREMENT_STEP: "INCREMENT_STEP",
     SUBMIT_RETURN: "SUBMIT_RETURN",
-    FINISH_RETURN: "FINISH_RETURN"
+    FINISH_RETURN: "FINISH_RETURN",
+    RESET: "RESET"
 }
 
 export const beginReturn = () => dispatch => {

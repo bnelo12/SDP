@@ -11,7 +11,8 @@ export const C = {
     ADD_INVALID_LOGIN_TOAST: "ADD_INVALID_LOGIN_TOAST",
     FINISHED_ADDING_INVALID_LOGIN_TOAST: "FINISHED_ADDING_INVALID_LOGIN_TOAST",
     SHOW_CREATE_ACCOUNT: "SHOW_CREATE_ACCOUNT",
-    SHOW_LOGIN: "SHOW_LOGIN"
+    SHOW_LOGIN: "SHOW_LOGIN",
+    RESET: "RESET"
 }
 
 export const subscribeOnAuthStateChanged = () => dispatch => {
@@ -38,8 +39,8 @@ export const login = (email, password) => dispatch => {
 }
 
 export const logout = () => dispatch => {
-    dispatch({type: C.LOG_OUT});    
-    firebase.auth().signOut();
+    dispatch({type: C.LOG_OUT});
+    firebase.auth().signOut().then(() => dispatch({type: C.RESET}));
 }
 
 export const finishedAddingInvalidLoginToast = () => dispatch => {

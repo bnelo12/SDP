@@ -10,6 +10,7 @@ export const C = {
     WRITE_QUEUE_DATA: "WRITE_QUEUE_DATA",
     WRITE_QUEUE_DATA_SUCCESS: "WRITE_QUEUE_DATA_SUCCESS",
     WRITE_QUEUE_DATA_FAIL: "WRITE_QUEUE_DATA_FAIL",
+    RESET: "RESET"
 }
 
 export const showQueue = (isReturn) => dispatch => {

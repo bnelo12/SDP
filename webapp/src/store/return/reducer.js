@@ -39,6 +39,14 @@ export default (state=defaultState, action) => {
                 returnStep: 0,
                 isWaitingForRobot: false
             }
+        case C.RESET:
+            return {
+                returnActive: false,
+                returnItems: [],
+                returnNumber: 0,
+                returnStep: 0,
+                isWaitingForRobot: false
+            }
         default: return state;
     }
 }
