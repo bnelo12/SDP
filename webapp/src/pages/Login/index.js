@@ -26,11 +26,11 @@ const mapDispatchToProps = dispatch => {
                 dispatch(unsubscribeOnAuthStateChanged(unsubscribe));
             },
             finishedAddingInvalidLoginToast: () => dispatch({type: C.FINISHED_ADDING_INVALID_LOGIN_TOAST}),
-            signInWithFacebook: () => dispatch(signInWithFacebook()),
-            signInWithGoogle: () => dispatch(signInWithGoogle()),
+            signInWithFacebook: (toastManager) => dispatch(signInWithFacebook(toastManager)),
+            signInWithGoogle: (toastManager) => dispatch(signInWithGoogle(toastManager)),
             showCreateAccount: () => dispatch({type: C.SHOW_CREATE_ACCOUNT}),
             hideCreateAccount: () => dispatch({type: C.SHOW_LOGIN}),
-            signUp: (username, password) => dispatch(signUp(username, password))
+            signUp: (username, password, toastManager) => dispatch(signUp(username, password, toastManager))
         }
     }
 }

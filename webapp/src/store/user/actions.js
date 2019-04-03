@@ -51,27 +51,36 @@ export const addInvalidLoginToast = (message) => dispatch => {
     dispatch({type: C.ADD_INVALID_LOGIN_TOAST, message});
 }
 
-export const signInWithFacebook = () => dispatch => {
+export const signInWithFacebook = (toastManager) => dispatch => {
     var provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider)
+        .then(result => {
+            toastManager.add("Welcome to the Retriva platform! Here you can rent items. Simply click on an item you want to rent and it will be added to your cart. When you are ready to collect head over to the cart page.", {appearance: "success", autoDismiss: false});
+        })
         .catch(function(error) {
             var errorMessage = error.message;
             dispatch(addInvalidLoginToast(errorMessage));
         });         
 }
 
-export const signInWithGoogle = () => dispatch => {
+export const signInWithGoogle = (toastManager) => dispatch => {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
+        .then(result => {
+            toastManager.add("Welcome to the Retriva platform! Here you can rent items. Simply click on an item you want to rent and it will be added to your cart. When you are ready to collect head over to the cart page.", {appearance: "success", autoDismiss: false});
+        })
         .catch(function(error) {
             var errorMessage = error.message;
             dispatch(addInvalidLoginToast(errorMessage));
         });     
 }
 
-export const signUp = (email, password) => dispatch => {
+export const signUp = (email, password, toastManager) => dispatch => {
     console.log(email, password)
     firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(result => {
+        toastManager.add("Welcome to the Retriva platform! Here you can rent items. Simply click on an item you want to rent and it will be added to your cart. When you are ready to collect head over to the cart page.", {appearance: "success", autoDismiss: false});
+    })
     .catch(function(error) {
         var errorMessage = error.message;
         dispatch(addInvalidLoginToast(errorMessage));

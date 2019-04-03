@@ -14,6 +14,7 @@ export const C = {
     REMOVE_ITEM_FROM_CART: "REMOVE_ITEM_FROM_CART",
     REMOVE_SINGLE_FROM_CART: "REMOVE_SINGLE_FROM_CART",
     EMPTY_CART: "EMPTY_CART",
+    RESET: "RESET"
 }
 
 export const addItemToCart = (id, item, user) => dispatch => {

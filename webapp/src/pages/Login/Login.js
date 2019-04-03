@@ -37,19 +37,20 @@ class Login extends Component {
             return (
                 <div id='login-page'>
                     <div id='background-image'/>
+                    <img id="badge" alt="retriva-logo" src={require("../../img/badge.png")}/>
                     <ReactCardFlip isFlipped={this.props.user.createAccountShouldShow}>
                         <div id='sign-in-form' key="front">
                             <SignInForm 
                                 onSubmit={this.props.userDispatch.login}
-                                onSignInWithFacebook={signInWithFacebook}
-                                onSignInWithGoogle={signInWithGoogle}
+                                onSignInWithFacebook={() => signInWithFacebook(toastManager)}
+                                onSignInWithGoogle={() => signInWithGoogle(toastManager)}
                                 onCreateAccount={this.props.userDispatch.showCreateAccount}
                             />
                         </div>
                         <div id='sign-up-form' key="back">
                             <SignUpForm
                                 onReturn={this.props.userDispatch.hideCreateAccount}
-                                onSubmit={this.props.userDispatch.signUp}
+                                onSubmit={(username, password) => this.props.userDispatch.signUp(username, password, toastManager)}
                                 toastManager={toastManager}
                             />
                         </div>
