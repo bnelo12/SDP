@@ -21,6 +21,14 @@ export default ({queue, items, cartItems, submitOrder, email, onCancelOrder, beg
     const inQueueRender = () => (
         <>
             <Loading isReturn={isReturn}/>
+            {
+                queue.queue.users ?
+                    queue.queue.users.findIndex(user => user === email) === 1 ?
+                        (<h4>You are next in the queue! Head over to the Retiva system!</h4>) :
+                        (<h4>There are  {queue.queue.users.findIndex(user => user === email)} users ahead of you</h4>)
+                    : null
+            }
+
             <IonButton 
                 onClick={(ev) => {
                     ev.stopPropagation();
